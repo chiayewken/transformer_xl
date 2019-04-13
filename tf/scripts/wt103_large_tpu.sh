@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Path
-LOCAL_DIR=../data/wikitext-103/
-GSDATA=
-GSEXP=
+# trailing "/" uncecessary
+LOCAL_DIR=../data/wikitext-103
+GSDATA=$2
+GSEXP=$2
 
 # TPU setting
 NUM_HOST=4
