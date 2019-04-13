@@ -260,8 +260,9 @@ def create_ordered_tfrecords(save_dir, basename, data, batch_size, tgt_len,
     # drop the remainder if use tpu
     if use_tpu and cur_tgt_len < tgt_len: 
       break
-    if num_batch % 500 == 0:
-      print("  processing batch {}".format(num_batch))
+    # printout no longer necessary with tqdm progress bar
+    # if num_batch % 500 == 0:
+    #   print("  processing batch {}".format(num_batch))
     for idx in range(batch_size):
       inputs = batched_data[idx, t:t + cur_tgt_len]
       labels = batched_data[idx, t + 1:t + cur_tgt_len + 1]

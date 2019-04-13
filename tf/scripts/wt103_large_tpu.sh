@@ -3,6 +3,11 @@
 echo mode: $1
 echo gsutil dir: $2
 
+# num_passes repeats data
+# default is 10 to mitigate dropping remainder on small datasets
+# should be able to set to 1 on large datasets
+echo num training passes: $3
+
 # Path
 # trailing "/" uncecessary
 LOCAL_DIR=../data/wikitext-103
@@ -10,8 +15,8 @@ GSDATA=$2
 GSEXP=$2
 
 # TPU setting
-NUM_HOST=4
-NUM_CORE=16 # TPUv2 -> 8 | TPUv3 -> 16
+NUM_HOST=1 # Colab TPUv2 -> 1 | Depends on TPU configuration eg pods have more
+NUM_CORE=8 # TPUv2 -> 8 | TPUv3 -> 16
 
 TEST_NUM_HOST=1
 TEST_NUM_CORE=8 # TPUv2 -> 8 | TPUv3 -> 16
@@ -45,7 +50,7 @@ if [[ $1 == 'train_data' ]]; then
         --per_host_train_bsz=${TRAIN_BSZ} \
         --per_host_valid_bsz=${VALID_BSZ} \
         --num_core_per_host=${NUM_CORE} \
-        --num_passes=10 \
+        --num_passes=$3 \
         --use_tpu=True \
         ${@:2}
 
