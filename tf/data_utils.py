@@ -1,25 +1,22 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
+import json
 import math
+import multiprocessing as mp
 import os
+import pickle
+from collections import Counter, OrderedDict
 from functools import partial
 
-from collections import Counter, OrderedDict
-import pickle
-import json
-import multiprocessing as mp
-
 import numpy as np
-
-from absl import flags
 import tensorflow as tf
-from vocabulary import Vocab
-
+from absl import flags
 from tensorflow.gfile import Exists as exists
-from tensorflow.gfile import MakeDirs as makedirs
 from tensorflow.gfile import Glob as glob
+from tensorflow.gfile import MakeDirs as makedirs
+from tqdm import tqdm
+
+from vocabulary import Vocab
 
 
 def _preprocess(shard, train, vocab, save_dir, cutoffs, bin_sizes, bsz, tgt_len,
@@ -258,7 +255,7 @@ def create_ordered_tfrecords(save_dir, basename, data, batch_size, tgt_len,
 
   num_batch = 0
   # for t in range(0, batched_data.shape[1] - tgt_len - 1, tgt_len):
-  for t in range(0, batched_data.shape[1] - 1, tgt_len):
+  for t in tqdm(range(0, batched_data.shape[1] - 1, tgt_len)):
     cur_tgt_len = min(batched_data.shape[1] - 1 - t, tgt_len)
     # drop the remainder if use tpu
     if use_tpu and cur_tgt_len < tgt_len: 
