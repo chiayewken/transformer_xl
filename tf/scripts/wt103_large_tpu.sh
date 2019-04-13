@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo mode: $1
+echo gsutil dir: $2
+
 # Path
 # trailing "/" uncecessary
 LOCAL_DIR=../data/wikitext-103
