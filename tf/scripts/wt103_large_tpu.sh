@@ -4,7 +4,7 @@ echo mode: $1
 echo gsutil dir: $2
 
 # num_passes repeats data
-# default is 10 to mitigate dropping remainder on small datasets
+# default is 10 to mitigate TPU dropping remainder on small datasets
 # should be able to set to 1 on large datasets
 echo num training passes: $3
 
@@ -33,8 +33,11 @@ D_INNER=4096
 # Training
 TGT_LEN=384
 MEM_LEN=384
-TRAIN_BSZ=128
-VALID_BSZ=128
+# TRAIN_BSZ=128
+# VALID_BSZ=128
+# BSZ 128 + Colab TPU ->  Used 18.76G of 8.00G hbm
+TRAIN_BSZ=32  
+VALID_BSZ=32 
 
 # Testing
 TEST_TGT_LEN=128
