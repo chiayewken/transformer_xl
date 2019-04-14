@@ -50,23 +50,28 @@ class Corpus(object):
       self.vocab.count_file(os.path.join(path, "train.txt"))
       self.vocab.count_file(os.path.join(path, "valid.txt"))
       self.vocab.count_file(os.path.join(path, "test.txt"))
-    # elif self.dataset == "wt103":
-    elif self.dataset in ["wt103", "bookcorpus"]:
+    elif self.dataset == "wt103":
       self.vocab.count_file(os.path.join(path, "train.txt"))
+    
+    elif self.dataset == "bookcorpus":
+      # assumes train.txt has been sharded to avoid OOM eg train00, train01 etc
+      train_path_pattern = os.path.join(path, "train*")
+      train_paths = glob(train_path_pattern)
+      # build vocab from 1st shard only otherwise we'll have 1.5mill tokens
+      self.vocab.count_file(train_paths[0])  
+    
     elif self.dataset == "lm1b":
       train_path_pattern = os.path.join(
           path, "1-billion-word-language-modeling-benchmark-r13output",
           "training-monolingual.tokenized.shuffled", "news.en-*")
       train_paths = glob(train_path_pattern)
-
       # the vocab will load from file when build_vocab() is called
       # for train_path in sorted(train_paths):
       #   self.vocab.count_file(train_path, verbose=True)
 
     self.vocab.build_vocab()
 
-    # if self.dataset in ["ptb", "wt2", "wt103"]:
-    if self.dataset in ["ptb", "wt2", "wt103", "bookcorpus"]:
+    if self.dataset in ["ptb", "wt2", "wt103"]:
       self.train = self.vocab.encode_file(
           os.path.join(path, "train.txt"), ordered=True)
       self.valid = self.vocab.encode_file(
@@ -80,6 +85,12 @@ class Corpus(object):
           os.path.join(path, "valid.txt"), ordered=True, add_eos=False)
       self.test  = self.vocab.encode_file(
           os.path.join(path, "test.txt"), ordered=True, add_eos=False)
+    elif self.dataset == "bookcorpus":
+      self.train = train_paths
+      self.valid = self.vocab.encode_file(
+          os.path.join(path, "valid.txt"), ordered=True)
+      self.test  = self.vocab.encode_file(
+          os.path.join(path, "test.txt"), ordered=True)
     elif self.dataset == "lm1b":
       self.train = train_paths
       valid_path = os.path.join(path, "valid.txt")
@@ -89,7 +100,6 @@ class Corpus(object):
       self.test  = self.vocab.encode_file(
           test_path, ordered=True, add_double_eos=True)
 
-    # if self.dataset == "wt103":
     if self.dataset in ["wt103", "bookcorpus"]:
       self.cutoffs = [0, 20000, 40000, 200000] + [len(self.vocab)]
     elif self.dataset == "lm1b":
@@ -114,8 +124,7 @@ class Corpus(object):
 
     record_info_path = os.path.join(save_dir, record_name)
 
-    # if self.dataset in ["ptb", "wt2", "wt103", "enwik8", "text8"]:
-    if self.dataset in ["ptb", "wt2", "wt103", "enwik8", "text8", "bookcorpus"]:
+    if self.dataset in ["ptb", "wt2", "wt103", "enwik8", "text8"]:
       data = getattr(self, split)
       bin_sizes = get_bin_sizes(
           data, bsz // num_core_per_host, tgt_len, self.cutoffs)
@@ -125,7 +134,7 @@ class Corpus(object):
           num_passes=FLAGS.num_passes if split == 'train' and use_tpu else 1,
           use_tpu=use_tpu)
       file_names.append(file_name)
-    elif self.dataset == "lm1b":
+    elif self.dataset in ["lm1b", "bookcorpus"]:
       bin_sizes = get_bin_sizes(
           self.valid, bsz // num_core_per_host, tgt_len, self.cutoffs)
       if split == "train":

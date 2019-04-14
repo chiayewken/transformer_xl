@@ -58,8 +58,9 @@ class Vocab(object):
         sents = []
         with open(path, "r") as f:
             for idx, line in tqdm(enumerate(f)):
-                if verbose and idx > 0 and idx % 500000 == 0:
-                    print("  line {}".format(idx))
+                # printout not needed if using tqdm
+                # if verbose and idx > 0 and idx % 500000 == 0:
+                    # print("  line {}".format(idx))
                 symbols = self.tokenize(line, add_eos=add_eos)
                 self.counter.update(symbols)
                 # The sents output is not used, accumulation leads to OOM for large datasets
