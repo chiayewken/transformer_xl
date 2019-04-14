@@ -75,8 +75,8 @@ class Corpus(object):
 			# assumes train.txt has been sharded to avoid OOM eg train00, train01 etc
 			train_path_pattern = os.path.join(path, "train*")
 			train_paths = glob(train_path_pattern)
-			# build vocab from 1st shard only otherwise we'll have 1.5mill tokens
-			self.vocab.count_file("train00")
+			# build vocab from wikitext-103 train otherwise we'll have 1.5mil tokens
+			self.vocab.count_file(os.path.join(path), "../wikitext-103/train.txt")
 
 		elif self.dataset == "lm1b":
 			train_path_pattern = os.path.join(
