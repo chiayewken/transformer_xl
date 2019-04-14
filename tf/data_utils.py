@@ -352,11 +352,14 @@ def get_lm_corpus(data_dir, dataset):
     if dataset in ["wt103", "wt2", "bookcorpus"]:
       kwargs["special"] = ["<eos>"]
       kwargs["lower_case"] = False
-      if dataset == "bookcorpus":
-        # OOM if count vocab for whole dataset
-        # so we restrict to same vocab_size as wt103
-        kwargs["max_size"] = 267735
-        print("{} vocab_size restricted to {}".format(dataset, kwargs["max_size"]))
+
+      # restricting vocab_size doesn't work because the vocab fn loads whole file first anyway
+      # if dataset == "bookcorpus":
+      #   # OOM if count vocab for whole dataset
+      #   # so we restrict to same vocab_size as wt103
+      #   kwargs["max_size"] = 267735
+      #   print("{} vocab_size restricted to {}".format(dataset, kwargs["max_size"]))
+    
     elif dataset == "ptb":
       kwargs["special"] = ["<eos>"]
       kwargs["lower_case"] = True
