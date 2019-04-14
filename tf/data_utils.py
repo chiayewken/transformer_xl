@@ -76,7 +76,7 @@ class Corpus(object):
 			train_path_pattern = os.path.join(path, "train*")
 			train_paths = glob(train_path_pattern)
 			# build vocab from wikitext-103 train otherwise we'll have 1.5mil tokens
-			self.vocab.count_file(os.path.join(path), "../wikitext-103/train.txt")
+			self.vocab.count_file(os.path.join(path, "../wikitext-103/train.txt"))
 
 		elif self.dataset == "lm1b":
 			train_path_pattern = os.path.join(
