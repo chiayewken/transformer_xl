@@ -50,7 +50,8 @@ class Corpus(object):
       self.vocab.count_file(os.path.join(path, "train.txt"))
       self.vocab.count_file(os.path.join(path, "valid.txt"))
       self.vocab.count_file(os.path.join(path, "test.txt"))
-    elif self.dataset == "wt103":
+    # elif self.dataset == "wt103":
+    elif self.dataset in ["wt103", "bookcorpus"]:
       self.vocab.count_file(os.path.join(path, "train.txt"))
     elif self.dataset == "lm1b":
       train_path_pattern = os.path.join(
@@ -64,7 +65,8 @@ class Corpus(object):
 
     self.vocab.build_vocab()
 
-    if self.dataset in ["ptb", "wt2", "wt103"]:
+    # if self.dataset in ["ptb", "wt2", "wt103"]:
+    if self.dataset in ["ptb", "wt2", "wt103", "bookcorpus"]:
       self.train = self.vocab.encode_file(
           os.path.join(path, "train.txt"), ordered=True)
       self.valid = self.vocab.encode_file(
@@ -87,7 +89,8 @@ class Corpus(object):
       self.test  = self.vocab.encode_file(
           test_path, ordered=True, add_double_eos=True)
 
-    if self.dataset == "wt103":
+    # if self.dataset == "wt103":
+    if self.dataset in ["wt103", "bookcorpus"]:
       self.cutoffs = [0, 20000, 40000, 200000] + [len(self.vocab)]
     elif self.dataset == "lm1b":
       self.cutoffs = [0, 60000, 100000, 640000] + [len(self.vocab)]
@@ -111,7 +114,8 @@ class Corpus(object):
 
     record_info_path = os.path.join(save_dir, record_name)
 
-    if self.dataset in ["ptb", "wt2", "wt103", "enwik8", "text8"]:
+    # if self.dataset in ["ptb", "wt2", "wt103", "enwik8", "text8"]:
+    if self.dataset in ["ptb", "wt2", "wt103", "enwik8", "text8", "bookcorpus"]:
       data = getattr(self, split)
       bin_sizes = get_bin_sizes(
           data, bsz // num_core_per_host, tgt_len, self.cutoffs)
@@ -344,7 +348,8 @@ def get_lm_corpus(data_dir, dataset):
   else:
     print("Producing dataset...")
     kwargs = {}
-    if dataset in ["wt103", "wt2"]:
+    # if dataset in ["wt103", "wt2"]:
+    if dataset in ["wt103", "wt2", "bookcorpus"]:
       kwargs["special"] = ["<eos>"]
       kwargs["lower_case"] = False
     elif dataset == "ptb":
@@ -555,7 +560,7 @@ if __name__ == "__main__":
   flags.DEFINE_string("data_dir", None,
         help="Location of the data corpus")
   flags.DEFINE_enum("dataset", "wt103",
-        ["ptb", "wt2", "wt103", "lm1b", "enwik8", "text8"],
+        ["ptb", "wt2", "wt103", "lm1b", "enwik8", "text8", "bookcorpus"],
         help="Dataset name.")
   flags.DEFINE_integer("per_host_train_bsz", 60,
         help="train batch size each host")

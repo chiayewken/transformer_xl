@@ -10,7 +10,7 @@ echo num training passes: $3
 
 # Path
 # trailing "/" uncecessary
-LOCAL_DIR=../data/wikitext-103
+LOCAL_DIR=../data/bookcorpus
 GSDATA=$2
 GSEXP=$2
 
@@ -49,7 +49,7 @@ TEST_BSZ=8
 if [[ $1 == 'train_data' ]]; then
     python data_utils.py \
         --data_dir=${LOCAL_DIR}/ \
-        --dataset=wt103 \
+        --dataset=bookcorpus \
         --tgt_len=${TGT_LEN} \
         --per_host_train_bsz=${TRAIN_BSZ} \
         --per_host_valid_bsz=${VALID_BSZ} \
@@ -59,15 +59,15 @@ if [[ $1 == 'train_data' ]]; then
         ${@:2}
 
     SRC_PATTERN=train.bsz-${TRAIN_BSZ}.tlen-${TGT_LEN}.core-${NUM_CORE}*
-    gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
+    gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/bookcorpus-tfrecords/
 
     SRC_PATTERN=valid.bsz-${VALID_BSZ}.tlen-${TGT_LEN}.core-${NUM_CORE}*
-    gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
+    gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/bookcorpus-tfrecords/
 
 elif [[ $1 == 'test_data' ]]; then
     python data_utils.py \
         --data_dir=${LOCAL_DIR}/ \
-        --dataset=wt103 \
+        --dataset=bookcorpus \
         --tgt_len=${TEST_TGT_LEN} \
         --per_host_test_bsz=${TEST_BSZ} \
         --num_core_per_host=${TEST_NUM_CORE} \
@@ -76,15 +76,15 @@ elif [[ $1 == 'test_data' ]]; then
         ${@:2}
 
     SRC_PATTERN=test.bsz-${TEST_BSZ}.tlen-${TEST_TGT_LEN}.core-${TEST_NUM_CORE}*
-    gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/wt103-tfrecords/
+    gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/bookcorpus-tfrecords/
 
 elif [[ $1 == 'train' ]]; then
     echo 'Run training...'
     python train.py \
-        --data_dir=${GSDATA}/wt103-tfrecords \
+        --data_dir=${GSDATA}/bookcorpus-tfrecords \
         --record_info_dir=${LOCAL_DIR}/tfrecords/ \
         --corpus_info_path=${LOCAL_DIR}/corpus-info.json \
-        --model_dir=${GSEXP}/wt103 \
+        --model_dir=${GSEXP}/bookcorpus \
         --div_val=${DIV_VAL} \
         --untie_r=True \
         --proj_share_all_but_first=True \
@@ -115,10 +115,10 @@ elif [[ $1 == 'train' ]]; then
 elif [[ $1 == 'eval' ]]; then
     echo 'Run evaluation...'
     python train.py \
-        --data_dir=${GSDATA}/wt103-tfrecords \
+        --data_dir=${GSDATA}/bookcorpus-tfrecords \
         --record_info_dir=${LOCAL_DIR}/tfrecords/ \
         --corpus_info_path=${LOCAL_DIR}/corpus-info.json \
-        --model_dir=${GSEXP}/wt103 \
+        --model_dir=${GSEXP}/bookcorpus \
         --div_val=${DIV_VAL} \
         --untie_r=True \
         --proj_share_all_but_first=True \
