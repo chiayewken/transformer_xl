@@ -441,7 +441,7 @@ def get_lm_corpus(data_dir, dataset):
 		# if dataset in ["wt103", "wt2"]:
 		if dataset in ["wt103", "wt2", "bookcorpus"]:
 			# kwargs["special"] = ["<eos>"]
-			kwargs["special"] = ["<eos>", "<UNK>"]
+			kwargs["special"] = ["<eos>", "<unk>"]
 			kwargs["lower_case"] = False
 			# vocab is brittle because the "<UNK>" token was not added by default
 			# yet somehow no error for wt103 valid and test set
