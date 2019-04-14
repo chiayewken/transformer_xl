@@ -51,6 +51,7 @@ def _preprocess(
             cutoffs,
             bin_sizes,
             use_tpu=use_tpu,
+            disable_tqdm=True,  # tqdm in inner loop doesn't display well
         )
         file_names.append(file_name)
         num_batch += num_batch_shuffle
@@ -205,7 +206,7 @@ class Corpus(object):
                         file_names.extend(res[0])
                         num_batch += res[1]
                 else:
-                    for shard, path in enumerate(self.train):
+                    for shard, path in tqdm(enumerate(self.train)):
                         data_shard = self.vocab.encode_file(
                             path, ordered=False, add_double_eos=True
                         )
@@ -232,6 +233,7 @@ class Corpus(object):
                                 self.cutoffs,
                                 bin_sizes,
                                 use_tpu=use_tpu,
+                                disable_tqdm=True,  # tqdm in inner loop doesn't display well
                             )
                             file_names.append(file_name)
                             num_batch += num_batch_
@@ -335,6 +337,7 @@ def create_ordered_tfrecords(
     bin_sizes=[],
     num_passes=1,
     use_tpu=False,
+    disable_tqdm=False,
 ):
 
     if use_tpu:
@@ -351,7 +354,7 @@ def create_ordered_tfrecords(
 
     num_batch = 0
     # for t in range(0, batched_data.shape[1] - tgt_len - 1, tgt_len):
-    for t in tqdm(range(0, batched_data.shape[1] - 1, tgt_len)):
+    for t in tqdm(range(0, batched_data.shape[1] - 1, tgt_len), disable=disable_tqdm):
         cur_tgt_len = min(batched_data.shape[1] - 1 - t, tgt_len)
         # drop the remainder if use tpu
         if use_tpu and cur_tgt_len < tgt_len:
