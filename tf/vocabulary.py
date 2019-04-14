@@ -60,7 +60,7 @@ class Vocab(object):
             for idx, line in tqdm(enumerate(f)):
                 # printout not needed if using tqdm
                 # if verbose and idx > 0 and idx % 500000 == 0:
-                    # print("  line {}".format(idx))
+                # print("  line {}".format(idx))
                 symbols = self.tokenize(line, add_eos=add_eos)
                 self.counter.update(symbols)
                 # The sents output is not used, accumulation leads to OOM for large datasets
@@ -70,8 +70,8 @@ class Vocab(object):
 
     def count_sents(self, sents, verbose=False):
         """
-      sents : a list of sentences, each a list of tokenized symbols
-    """
+    sents : a list of sentences, each a list of tokenized symbols
+  """
         if verbose:
             print("counting {} sents ...".format(len(sents)))
         for idx, symbols in enumerate(sents):
