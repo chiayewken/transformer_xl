@@ -7,8 +7,8 @@ import pickle
 import tensorflow
 from absl import flags
 
-from tf.vocabulary_bpe import get_encoder
-from tf.data_utils import Corpus
+from vocabulary_bpe import get_encoder
+from data_utils import Corpus
 
 
 class BPECorpus(Corpus):
