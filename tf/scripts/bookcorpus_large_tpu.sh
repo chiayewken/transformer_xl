@@ -58,11 +58,15 @@ if [[ $1 == 'train_data' ]]; then
         --use_tpu=True \
         ${@:2}
 
-    SRC_PATTERN=train.bsz-${TRAIN_BSZ}.tlen-${TGT_LEN}.core-${NUM_CORE}*
-    gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/bookcorpus-tfrecords/
+    # SRC_PATTERN=train.bsz-${TRAIN_BSZ}.tlen-${TGT_LEN}.core-${NUM_CORE}*
+    # gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/bookcorpus-tfrecords/
+    # SRC_PATTERN=valid.bsz-${VALID_BSZ}.tlen-${TGT_LEN}.core-${NUM_CORE}*
+    # gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/bookcorpus-tfrecords/
 
-    SRC_PATTERN=valid.bsz-${VALID_BSZ}.tlen-${TGT_LEN}.core-${NUM_CORE}*
-    gsutil -m cp ${LOCAL_DIR}/tfrecords/${SRC_PATTERN} ${GSDATA}/bookcorpus-tfrecords/
+    # include corpus metadata in gcloud bucket
+    gsutil -m cp ${LOCAL_DIR}/tfrecords/* ${GSDATA}/bookcorpus-tfrecords/
+    gsutil -m cp ${LOCAL_DIR}/cache.pkl ${GSDATA}/bookcorpus-tfrecords/
+    gsutil -m cp ${LOCAL_DIR}/corpus-info.json ${GSDATA}/bookcorpus-tfrecords/
 
 elif [[ $1 == 'test_data' ]]; then
     python data_utils.py \
