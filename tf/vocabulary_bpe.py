@@ -126,6 +126,9 @@ class Encoder:
         )
         return text
 
+    def __len__(self):
+        return len(self.encoder)
+
 
 def get_encoder(model_name="117M"):
     maybe_download_vocab(model_name)
