@@ -40,7 +40,7 @@ class BPECorpus(Corpus):
             self.test = self.vocab.encode_file(os.path.join(path, "test.txt"))
 
         # not sure what this is for
-        self.cutoffs = []
+        self.cutoffs = [0, 20000, 40000, 200000] + [len(self.vocab)]
 
 
 def get_lm_corpus(data_dir, dataset):
