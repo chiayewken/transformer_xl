@@ -7,13 +7,17 @@ echo gsutil dir: $2
 # default is 10 to mitigate TPU dropping remainder on small datasets
 # should be able to set to 1 on large datasets
 echo num training passes: $3
+echo dataset: $4
+echo local_dir: $5
 
 # Path
 # trailing "/" uncecessary
-LOCAL_DIR=../data/wikitext-103
+LOCAL_DIR=$5
+# eg ../data/wikitext-103
 GSDATA=$2
 GSEXP=$2
-DATASET=wt103
+DATASET=$4
+# eg wt103
 
 # TPU setting
 NUM_HOST=1 # Colab TPUv2 -> 1 | Depends on TPU configuration eg pods have more
@@ -23,7 +27,7 @@ TEST_NUM_HOST=1
 TEST_NUM_CORE=8 # TPUv2 -> 8 | TPUv3 -> 16
 
 # Model
-DIV_VAL=4
+# DIV_VAL=4  # reduced vocab size due to BPE, no need to reduce emb_dim
 N_LAYER=18
 D_MODEL=1024
 D_EMBED=1024
