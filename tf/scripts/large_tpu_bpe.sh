@@ -27,7 +27,7 @@ TEST_NUM_HOST=1
 TEST_NUM_CORE=8 # TPUv2 -> 8 | TPUv3 -> 16
 
 # Model
-# DIV_VAL=4  # reduced vocab size due to BPE, no need to reduce emb_dim
+# DIV_VAL=4  # Default = 1 | reduced vocab size due to BPE, no need to reduce emb_dim
 N_LAYER=18
 D_MODEL=1024
 D_EMBED=1024
@@ -36,14 +36,17 @@ D_HEAD=64
 D_INNER=4096
 
 # Training
-TGT_LEN=384
-MEM_LEN=384
+# TGT_LEN=384
+# MEM_LEN=384
+# Align to sota/wt103.sh
+TGT_LEN=256
+MEM_LEN=256
 # TRAIN_BSZ=128
 # VALID_BSZ=128
 # BSZ 128 + Colab TPU ->  Used 18.76G of 8.00G hbm
 # BSZ 32 + Colab TPU ->  Used 8.41G of 8.00G hbm
-TRAIN_BSZ=24  
-VALID_BSZ=24
+TRAIN_BSZ=32  
+VALID_BSZ=32
 
 # Testing
 TEST_TGT_LEN=128
