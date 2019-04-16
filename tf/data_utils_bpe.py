@@ -43,7 +43,7 @@ class BPECorpus(Corpus):
         # self.cutoffs = []
         # if cutoffs = [], tfrecords will be much smaller
         # training will throw ValueError: Dimension -56279 must be >= 0
-        # likely means that a value in cutoff exceeded vocab size
+        # eg 200k cutoff > 57k bpe vocab size)
         # self.cutoffs = [0, 20000, 40000, 200000] + [len(self.vocab)]
         self.cutoffs = [0, 20000, 40000] + [len(self.vocab)]
 
