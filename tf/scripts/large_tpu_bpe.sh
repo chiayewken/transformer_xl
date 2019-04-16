@@ -91,7 +91,6 @@ elif [[ $1 == 'train' ]]; then
         --record_info_dir=${LOCAL_DIR}/tfrecords/ \
         --corpus_info_path=${LOCAL_DIR}/corpus-info.json \
         --model_dir=${GSEXP}/${DATASET} \
-        # --div_val=${DIV_VAL} \
         --untie_r=True \
         --proj_share_all_but_first=True \
         --proj_same_dim=True \
@@ -125,7 +124,6 @@ elif [[ $1 == 'eval' ]]; then
         --record_info_dir=${LOCAL_DIR}/tfrecords/ \
         --corpus_info_path=${LOCAL_DIR}/corpus-info.json \
         --model_dir=${GSEXP}/${DATASET} \
-        # --div_val=${DIV_VAL} \
         --untie_r=True \
         --proj_share_all_but_first=True \
         --proj_same_dim=True \
