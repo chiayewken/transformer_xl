@@ -43,10 +43,9 @@ TGT_LEN=256
 MEM_LEN=256
 # TRAIN_BSZ=128
 # VALID_BSZ=128
-# BSZ 128 + Colab TPU ->  Used 18.76G of 8.00G hbm
-# BSZ 32 + Colab TPU ->  Used 8.41G of 8.00G hbm
-TRAIN_BSZ=32  
-VALID_BSZ=32
+# BSZ 64 + Colab TPU ->  Used 8.91G of 8.00G hbm
+TRAIN_BSZ=40
+VALID_BSZ=40
 
 # Testing
 TEST_TGT_LEN=128
