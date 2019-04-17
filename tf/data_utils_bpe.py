@@ -74,7 +74,7 @@ class BPECorpus:
             )
             num_batch = 0
 
-            for shard, path in tqdm(enumerate(self.train)):
+            for shard, path in tqdm(enumerate(self.train), total=len(self.train)):
                 # nested tqdms misbehave in colab
                 data_shard = self.vocab.encode_file(path, disable_tqdm=True)
                 basename = "train-{:03d}".format(shard)
