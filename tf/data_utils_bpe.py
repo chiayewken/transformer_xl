@@ -6,12 +6,13 @@ import pickle
 
 import tensorflow
 from absl import flags
+from tqdm import tqdm
 
 from vocabulary_bpe import get_encoder
-from data_utils import Corpus
+from data_utils import get_bin_sizes, create_ordered_tfrecords
 
 
-class BPECorpus(Corpus):
+class BPECorpus:
     def __init__(self, path, dataset, *args, **kwargs):
         self.dataset = dataset
         self.vocab = get_encoder()
@@ -46,6 +47,77 @@ class BPECorpus(Corpus):
         # eg 200k cutoff > 57k bpe vocab size)
         # self.cutoffs = [0, 20000, 40000, 200000] + [len(self.vocab)]
         self.cutoffs = [0, 20000, 40000] + [len(self.vocab)]
+
+    def convert_to_tfrecords(
+        self, split, save_dir, bsz, tgt_len, num_core_per_host, **kwargs
+    ):
+        FLAGS = kwargs.get("FLAGS")
+        file_names = []
+        use_tpu = FLAGS.use_tpu and not (split == "test" and num_core_per_host == 1)
+
+        if use_tpu:
+            record_name = "record_info-{}.bsz-{}.tlen-{}.core-{}.json".format(
+                split, bsz, tgt_len, num_core_per_host
+            )
+        else:
+            record_name = "record_info-{}.bsz-{}.tlen-{}.json".format(
+                split, bsz, tgt_len
+            )
+        record_info_path = os.path.join(save_dir, record_name)
+
+        # if dataset is too large, train files will be split to avoid OOM
+        # self.train will be list of filepaths instead of nparray of tokens
+        # we need to encode each train file separately before conversion
+        if (split == "train" and type(self.train) == list):
+            bin_sizes = get_bin_sizes(
+                self.valid, bsz // num_core_per_host, tgt_len, self.cutoffs
+            )
+            num_batch = 0
+
+            for shard, path in enumerate(self.train):
+                print("Shard {} of {}".format(shard, len(self.train)))
+                data_shard = self.vocab.encode_file(path)
+                basename = "train-{:03d}".format(shard)
+                file_name, num_batch_ = create_ordered_tfrecords(
+                    save_dir,
+                    basename,
+                    data_shard,
+                    bsz,
+                    tgt_len,
+                    num_core_per_host,
+                    self.cutoffs,
+                    bin_sizes,
+                    use_tpu=use_tpu,
+                )
+                file_names.append(file_name)
+                num_batch += num_batch_
+
+        else:
+            data = getattr(self, split)
+            bin_sizes = get_bin_sizes(
+                data, bsz // num_core_per_host, tgt_len, self.cutoffs
+            )
+            file_name, num_batch = create_ordered_tfrecords(
+                save_dir,
+                split,
+                data,
+                bsz,
+                tgt_len,
+                num_core_per_host,
+                self.cutoffs,
+                bin_sizes,
+                num_passes=FLAGS.num_passes if split == "train" and use_tpu else 1,
+                use_tpu=use_tpu,
+            )
+            file_names.append(file_name)
+
+        with open(record_info_path, "w") as fp:
+            record_info = {
+                "filenames": file_names,
+                "bin_sizes": bin_sizes,
+                "num_batch": num_batch,
+            }
+            json.dump(record_info, fp)
 
 
 def get_lm_corpus(data_dir, dataset):

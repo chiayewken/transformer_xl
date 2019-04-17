@@ -115,9 +115,7 @@ class Encoder:
             )
         return bpe_tokens
 
-    def encode_file(self, path, ordered=None, add_double_eos=None):
-        # ordered and add_double_eos are dummy arguments
-        # to be compatible with data_utils.convert_to_tfrecords
+    def encode_file(self, path):
         with open(path) as file:
             return np.concatenate([self.encode(line) for line in tqdm(file)])
 

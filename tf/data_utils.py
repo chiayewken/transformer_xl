@@ -728,4 +728,3 @@ if __name__ == "__main__":
     flags.DEFINE_bool("use_tpu", True, help="use tpu")
 
     tf.app.run(main)
-
