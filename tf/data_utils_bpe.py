@@ -88,6 +88,7 @@ class BPECorpus:
                     self.cutoffs,
                     bin_sizes,
                     use_tpu=use_tpu,
+                    disable_tqdm=True,
                 )
                 file_names.append(file_name)
                 num_batch += num_batch_
