@@ -65,18 +65,18 @@ class BPECorpus:
             )
         record_info_path = os.path.join(save_dir, record_name)
 
-        # if dataset is too large, train files will be split to avoid OOM
+        # if large datasets eg bookcorpus, lm1b exist as separate files to avoid OOM
         # self.train will be list of filepaths instead of nparray of tokens
         # we need to encode each train file separately before conversion
-        if (split == "train" and type(self.train) == list):
+        if split == "train" and type(self.train) == list:
             bin_sizes = get_bin_sizes(
                 self.valid, bsz // num_core_per_host, tgt_len, self.cutoffs
             )
             num_batch = 0
 
-            for shard, path in enumerate(self.train):
-                print("Shard {} of {}".format(shard, len(self.train)))
-                data_shard = self.vocab.encode_file(path)
+            for shard, path in tqdm(enumerate(self.train)):
+                # nested tqdms misbehave in colab
+                data_shard = self.vocab.encode_file(path, disable_tqdm=True)
                 basename = "train-{:03d}".format(shard)
                 file_name, num_batch_ = create_ordered_tfrecords(
                     save_dir,

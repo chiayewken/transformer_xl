@@ -115,9 +115,11 @@ class Encoder:
             )
         return bpe_tokens
 
-    def encode_file(self, path):
+    def encode_file(self, path, disable_tqdm=False):
         with open(path) as file:
-            return np.concatenate([self.encode(line) for line in tqdm(file)])
+            return np.concatenate(
+                [self.encode(line) for line in tqdm(file, disable=disable_tqdm)]
+            )
 
     def decode(self, tokens):
         text = "".join([self.decoder[token] for token in tokens])
