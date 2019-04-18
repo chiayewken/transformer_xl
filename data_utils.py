@@ -1,20 +1,15 @@
-from __future__ import absolute_import, division, print_function
-
 import json
-import math
 import multiprocessing as mp
 import os
 import pickle
 from functools import partial
+from typing import List, Tuple
 
+import math
 import numpy as np
 import tensorflow as tf
 from absl import flags
-from tensorflow.gfile import Exists as exists
-from tensorflow.gfile import Glob as glob
-from tensorflow.gfile import MakeDirs as makedirs
 from tqdm import tqdm
-from typing import List, Tuple
 
 from vocabulary import Vocab
 
@@ -75,7 +70,7 @@ class Corpus(object):
         elif self.dataset == "bookcorpus":
             # assumes train.txt has been sharded to avoid OOM eg train00, train01 etc
             train_path_pattern = os.path.join(path, "train*")
-            train_paths = glob(train_path_pattern)
+            train_paths = tf.gfile.Glob(train_path_pattern)
             # build vocab from wikitext-103 train otherwise we'll have 1.5mil tokens
             self.vocab.count_file(os.path.join(path, "../wikitext-103/train.txt"))
 
@@ -86,7 +81,7 @@ class Corpus(object):
                 "training-monolingual.tokenized.shuffled",
                 "news.en-*",
             )
-            train_paths = glob(train_path_pattern)
+            train_paths = tf.gfile.Glob(train_path_pattern)
             # the vocab will load from file when build_vocab() is called
             # for train_path in sorted(train_paths):
             #   self.vocab.count_file(train_path, verbose=True)
@@ -443,7 +438,7 @@ def create_ordered_tfrecords(
 def get_lm_corpus(data_dir: str, dataset: str) -> Corpus:
     fn = os.path.join(data_dir, "cache.pkl")
 
-    if exists(fn):
+    if tf.gfile.Exists(fn):
         print("Loading cached dataset...")
         with open(fn, "rb") as fp:
             corpus = pickle.load(fp)
@@ -497,8 +492,8 @@ def main(unused_argv) -> None:
     corpus = get_lm_corpus(FLAGS.data_dir, FLAGS.dataset)
 
     save_dir = os.path.join(FLAGS.data_dir, "tfrecords")
-    if not exists(save_dir):
-        makedirs(save_dir)
+    if not tf.gfile.Exists(save_dir):
+        tf.gfile.tf.gfile.Makedirs(save_dir)
 
     # test mode
     if FLAGS.per_host_test_bsz > 0:

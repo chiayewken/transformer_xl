@@ -1,18 +1,14 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 from typing import List
 
-import data_utils
 import math
-import model
 import numpy as np
 import tensorflow as tf
-import tpu_estimator
 from absl import flags
-from six.moves import xrange  # pylint: disable=redefined-builtin
-from tensorflow.gfile import Exists as exists
+from six.moves import xrange
+
+import data_utils
+import model
+import tpu_estimator
 
 # TPU parameters
 flags.DEFINE_string("master", default=None, help="master")
@@ -459,7 +455,7 @@ def main(unused_argv) -> None:
             ckpt_state = tf.train.get_checkpoint_state(FLAGS.model_dir)
             eval_results = []
             for eval_checkpoint in ckpt_state.all_model_checkpoint_paths:
-                if not exists(eval_checkpoint + ".index"):
+                if not tf.gfile.Exists(eval_checkpoint + ".index"):
                     continue
                 global_step = int(eval_checkpoint.split("-")[-1])
                 if (

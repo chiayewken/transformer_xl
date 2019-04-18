@@ -1,11 +1,12 @@
-import requests
-import os
 import json
-import regex as re
-import numpy as np
+import os
 from functools import lru_cache
-from tqdm import tqdm
 from typing import List
+
+import numpy as np
+import regex as re
+import requests
+from tqdm import tqdm
 
 """Byte pair encoding utilities"""
 """Adapted from https://github.com/openai/gpt-2"""
@@ -52,8 +53,8 @@ def get_pairs(word: tuple) -> set:
 
 class Encoder:
     def __init__(self, encoder: dict, bpe_merges: List[tuple], errors="replace"):
-        self.encoder = encoder
-        self.decoder = {v: k for k, v in self.encoder.items()}
+        self.map_encode = encoder
+        self.map_decode = {v: k for k, v in self.map_encode.items()}
         self.errors = errors  # how to handle errors in decoding
         self.byte_encoder = bytes_to_unicode()
         self.byte_decoder = {v: k for k, v in self.byte_encoder.items()}
@@ -111,7 +112,7 @@ class Encoder:
         for token in re.findall(self.pat, text):
             token = "".join(self.byte_encoder[b] for b in token.encode("utf-8"))
             bpe_tokens.extend(
-                self.encoder[bpe_token] for bpe_token in self.bpe(token).split(" ")
+                self.map_encode[bpe_token] for bpe_token in self.bpe(token).split(" ")
             )
         return bpe_tokens
 
@@ -122,14 +123,14 @@ class Encoder:
             )
 
     def decode(self, tokens: List[int]) -> str:
-        text = "".join([self.decoder[token] for token in tokens])
+        text = "".join([self.map_decode[token] for token in tokens])
         text = bytearray([self.byte_decoder[c] for c in text]).decode(
             "utf-8", errors=self.errors
         )
         return text
 
     def __len__(self) -> int:
-        return len(self.encoder)
+        return len(self.map_encode)
 
 
 def get_encoder(model_name: str = "117M") -> Encoder:

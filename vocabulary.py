@@ -1,16 +1,8 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 from collections import Counter, OrderedDict
-from tqdm import tqdm
 
 import numpy as np
-
 import tensorflow as tf
-
-from tensorflow.gfile import Open as open
-from tensorflow.gfile import Exists as exists
+from tqdm import tqdm
 
 
 class Vocab(object):
@@ -53,10 +45,10 @@ class Vocab(object):
     def count_file(self, path, verbose=True, add_eos=False):
         if verbose:
             print("counting file {} ...".format(path))
-        assert exists(path)
+        assert tf.gfile.Exists(path)
 
         sents = []
-        with open(path, "r") as f:
+        with tf.gfile.Open(path, "r") as f:
             for idx, line in tqdm(enumerate(f)):
                 # printout not needed if using tqdm
                 # if verbose and idx > 0 and idx % 500000 == 0:
@@ -83,7 +75,7 @@ class Vocab(object):
         self.idx2sym = []
         self.sym2idx = OrderedDict()
 
-        with open(vocab_file, "r") as f:
+        with tf.gfile.Open(vocab_file, "r") as f:
             for line in f:
                 symb = line.strip().split()[0]
                 self.add_symbol(symb)
@@ -122,9 +114,9 @@ class Vocab(object):
     ):
         if verbose:
             print("encoding file {} ...".format(path))
-        assert exists(path)
+        assert tf.gfile.Exists(path)
         encoded = []
-        with open(path, "r") as f:
+        with tf.gfile.Open(path, "r") as f:
             for idx, line in enumerate(f):
                 if verbose and idx > 0 and idx % 500000 == 0:
                     print("  line {}".format(idx))
