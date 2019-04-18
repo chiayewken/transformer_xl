@@ -13,7 +13,7 @@ from data_utils import get_bin_sizes, create_ordered_tfrecords
 
 
 class BPECorpus:
-    def __init__(self, path, dataset, *args, **kwargs):
+    def __init__(self, path: str, dataset: str, *args, **kwargs):
         self.dataset = dataset
         self.vocab = get_encoder()
 
@@ -49,8 +49,14 @@ class BPECorpus:
         self.cutoffs = [0, 20000, 40000] + [len(self.vocab)]
 
     def convert_to_tfrecords(
-        self, split, save_dir, bsz, tgt_len, num_core_per_host, **kwargs
-    ):
+        self,
+        split: str,
+        save_dir: str,
+        bsz: int,
+        tgt_len: int,
+        num_core_per_host: int,
+        **kwargs: dict
+    ) -> None:
         FLAGS = kwargs.get("FLAGS")
         file_names = []
         use_tpu = FLAGS.use_tpu and not (split == "test" and num_core_per_host == 1)
@@ -121,7 +127,7 @@ class BPECorpus:
             json.dump(record_info, fp)
 
 
-def get_lm_corpus(data_dir, dataset):
+def get_lm_corpus(data_dir: str, dataset: str) -> BPECorpus:
     fn = os.path.join(data_dir, "cache.pkl")
 
     if tensorflow.gfile.Exists(fn):
@@ -147,7 +153,7 @@ def get_lm_corpus(data_dir, dataset):
     return corpus
 
 
-def main(unused_argv):
+def main(unused_argv) -> None:
     del unused_argv  # Unused
 
     corpus = get_lm_corpus(FLAGS.data_dir, FLAGS.dataset)

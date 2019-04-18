@@ -14,22 +14,23 @@ from tensorflow.gfile import Exists as exists
 from tensorflow.gfile import Glob as glob
 from tensorflow.gfile import MakeDirs as makedirs
 from tqdm import tqdm
+from typing import List, Tuple
 
 from vocabulary import Vocab
 
 
 def _preprocess(
-    shard,
-    train,
-    vocab,
-    save_dir,
-    cutoffs,
-    bin_sizes,
-    bsz,
-    tgt_len,
-    num_core_per_host,
-    use_tpu,
-    num_shuffle,
+        shard: int,
+        train,
+        vocab: Vocab,
+        save_dir: str,
+        cutoffs: List[int],
+        bin_sizes,
+        bsz,
+        tgt_len,
+        num_core_per_host,
+        use_tpu,
+        num_shuffle,
 ):
     file_names = []
     num_batch = 0
@@ -141,7 +142,7 @@ class Corpus(object):
             self.cutoffs = []
 
     def convert_to_tfrecords(
-        self, split, save_dir, bsz, tgt_len, num_core_per_host, **kwargs
+            self, split, save_dir, bsz, tgt_len, num_core_per_host, **kwargs
     ):
         FLAGS = kwargs.get("FLAGS")
 
@@ -261,13 +262,14 @@ class Corpus(object):
             json.dump(record_info, fp)
 
 
-def get_bin_sizes(data, batch_size, tgt_len, cutoffs, std_mult=[2.5, 2.5, 2.5]):
+def get_bin_sizes(data, batch_size: int, tgt_len: int, cutoffs: List[int], std_mult: Tuple[float] = (2.5, 2.5, 2.5)) -> \
+        List[int]:
     """
         Note: the `batch_size` here should be per-core batch size
     """
     bin_sizes = []
 
-    def _nearest_to_eight(x):  # so that it's faster on TPUs
+    def _nearest_to_eight(x: int) -> int:  # so that it's faster on TPUs
         y = x - x % 8
         return y + 8 if x % 8 >= 4 else max(8, y)
 
@@ -299,7 +301,7 @@ def _float_feature(values):
     return tf.train.Feature(float_list=tf.train.FloatList(value=values))
 
 
-def batchify(data, batch_size, num_passes):
+def batchify(data: np.ndarray, batch_size: int, num_passes: int) -> np.ndarray:
     """
         if use_tpu = True: num_passes > 1
 
@@ -316,7 +318,7 @@ def batchify(data, batch_size, num_passes):
         data_list = []
         for i in range(num_passes):
             start = np.random.randint(0, data_len)
-            data_list.append(double_data[start : start + data_len])
+            data_list.append(double_data[start: start + data_len])
         data = np.concatenate(data_list)
 
     num_step = len(data) // batch_size
@@ -327,19 +329,18 @@ def batchify(data, batch_size, num_passes):
 
 
 def create_ordered_tfrecords(
-    save_dir,
-    basename,
-    data,
-    batch_size,
-    tgt_len,
-    num_core_per_host,
-    cutoffs=[],
-    bin_sizes=[],
-    num_passes=1,
-    use_tpu=False,
-    disable_tqdm=False,
-):
-
+        save_dir: str,
+        basename: str,
+        data: np.ndarray,
+        batch_size: int,
+        tgt_len: int,
+        num_core_per_host: int,
+        cutoffs: List[int] = [],
+        bin_sizes: List[int] = [],
+        num_passes: int = 1,
+        use_tpu: bool = False,
+        disable_tqdm: bool = False,
+) -> (str, int):
     if use_tpu:
         file_name = "{}.bsz-{}.tlen-{}.core-{}.tfrecords".format(
             basename, batch_size, tgt_len, num_core_per_host
@@ -363,8 +364,8 @@ def create_ordered_tfrecords(
         # if num_batch % 500 == 0:
         #   print("  processing batch {}".format(num_batch))
         for idx in range(batch_size):
-            inputs = batched_data[idx, t : t + cur_tgt_len]
-            labels = batched_data[idx, t + 1 : t + cur_tgt_len + 1]
+            inputs = batched_data[idx, t: t + cur_tgt_len]
+            labels = batched_data[idx, t + 1: t + cur_tgt_len + 1]
 
             # features dict
             feature = {
@@ -375,7 +376,7 @@ def create_ordered_tfrecords(
             if len(cutoffs) > 0 and use_tpu:
                 # validate `bin_sizes` and `cutoffs`
                 assert (
-                    len(cutoffs) - len(bin_sizes) == 2
+                        len(cutoffs) - len(bin_sizes) == 2
                 ), "len(cutoffs) - len(bin_sizes) != 2"
 
                 # mask for bin 0
@@ -434,7 +435,7 @@ def create_ordered_tfrecords(
     return file_name, num_batch
 
 
-def get_lm_corpus(data_dir, dataset):
+def get_lm_corpus(data_dir: str, dataset: str) -> Corpus:
     fn = os.path.join(data_dir, "cache.pkl")
 
     if exists(fn):
@@ -485,7 +486,7 @@ def get_lm_corpus(data_dir, dataset):
     return corpus
 
 
-def main(unused_argv):
+def main(unused_argv) -> None:
     del unused_argv  # Unused
 
     corpus = get_lm_corpus(FLAGS.data_dir, FLAGS.dataset)
@@ -507,7 +508,7 @@ def main(unused_argv):
         return
 
     for split, batch_size in zip(
-        ["train", "valid"], [FLAGS.per_host_train_bsz, FLAGS.per_host_valid_bsz]
+            ["train", "valid"], [FLAGS.per_host_train_bsz, FLAGS.per_host_valid_bsz]
     ):
 
         if batch_size <= 0:
@@ -524,8 +525,8 @@ def main(unused_argv):
 
 
 def load_record_info(
-    record_info_dir, split, per_host_bsz, tgt_len, num_core_per_host, use_tpu
-):
+        record_info_dir: str, split: str, per_host_bsz: int, tgt_len: int, num_core_per_host: int, use_tpu: bool
+) -> dict:
     if use_tpu:
         record_name = "record_info-{}.bsz-{}.tlen-{}.core-{}.json".format(
             split, per_host_bsz, tgt_len, num_core_per_host
@@ -543,14 +544,14 @@ def load_record_info(
 
 
 def get_input_fn(
-    record_info_dir,
-    split,
-    per_host_bsz,
-    tgt_len,
-    num_core_per_host,
-    num_hosts=1,
-    use_tpu=False,
-):
+        record_info_dir: str,
+        split: str,
+        per_host_bsz: int,
+        tgt_len: int,
+        num_core_per_host: int,
+        num_hosts: int = 1,
+        use_tpu: bool = False,
+) :
     """Creates input function."""
     record_info = load_record_info(
         record_info_dir,
@@ -662,13 +663,13 @@ def get_input_fn(
                 num_batch_per_host = num_batch // num_hosts
 
                 my_start_sample_id = (
-                    host_id * num_batch_per_host * num_core_per_host * per_core_bsz
+                        host_id * num_batch_per_host * num_core_per_host * per_core_bsz
                 )
                 my_sample_num = num_batch_per_host * num_core_per_host * per_core_bsz
                 dataset = (
                     tf.data.TFRecordDataset(dataset)
-                    .skip(my_start_sample_id)
-                    .take(my_sample_num)
+                        .skip(my_start_sample_id)
+                        .take(my_sample_num)
                 )
             else:
                 dataset = tf.data.TFRecordDataset(dataset)
@@ -712,7 +713,7 @@ if __name__ == "__main__":
         "per_host_test_bsz",
         0,
         help="If > 0, enter test mode and process test set only."
-        "Otherwise, process train and dev sets only.",
+             "Otherwise, process train and dev sets only.",
     )
     flags.DEFINE_integer("tgt_len", 70, help="number of tokens to predict")
     flags.DEFINE_integer("max_batch", -1, help="run in debug mode")

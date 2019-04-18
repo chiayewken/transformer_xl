@@ -5,14 +5,14 @@ import regex as re
 import numpy as np
 from functools import lru_cache
 from tqdm import tqdm
-
+from typing import List
 
 """Byte pair encoding utilities"""
 """Adapted from https://github.com/openai/gpt-2"""
 
 
 @lru_cache()
-def bytes_to_unicode():
+def bytes_to_unicode() -> dict:
     """
     Returns list of utf-8 byte and a corresponding list of unicode strings.
     The reversible bpe codes work on unicode strings.
@@ -38,7 +38,7 @@ def bytes_to_unicode():
     return dict(zip(bs, cs))
 
 
-def get_pairs(word):
+def get_pairs(word: tuple) -> set:
     """Return set of symbol pairs in a word.
     Word is represented as tuple of symbols (symbols being variable-length strings).
     """
@@ -51,7 +51,7 @@ def get_pairs(word):
 
 
 class Encoder:
-    def __init__(self, encoder, bpe_merges, errors="replace"):
+    def __init__(self, encoder: dict, bpe_merges: List[tuple], errors="replace"):
         self.encoder = encoder
         self.decoder = {v: k for k, v in self.encoder.items()}
         self.errors = errors  # how to handle errors in decoding
@@ -106,7 +106,7 @@ class Encoder:
         self.cache[token] = word
         return word
 
-    def encode(self, text):
+    def encode(self, text: str) -> List[int]:
         bpe_tokens = []
         for token in re.findall(self.pat, text):
             token = "".join(self.byte_encoder[b] for b in token.encode("utf-8"))
@@ -115,24 +115,24 @@ class Encoder:
             )
         return bpe_tokens
 
-    def encode_file(self, path, disable_tqdm=False):
+    def encode_file(self, path: str, disable_tqdm: bool = False) -> np.ndarray:
         with open(path) as file:
             return np.concatenate(
                 [self.encode(line) for line in tqdm(file, disable=disable_tqdm)]
             )
 
-    def decode(self, tokens):
+    def decode(self, tokens: List[int]) -> str:
         text = "".join([self.decoder[token] for token in tokens])
         text = bytearray([self.byte_decoder[c] for c in text]).decode(
             "utf-8", errors=self.errors
         )
         return text
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.encoder)
 
 
-def get_encoder(model_name="117M"):
+def get_encoder(model_name: str = "117M") -> Encoder:
     maybe_download_vocab(model_name)
     with open("encoder.json", "r") as f:
         encoder = json.load(f)
@@ -142,7 +142,7 @@ def get_encoder(model_name="117M"):
     return Encoder(encoder=encoder, bpe_merges=bpe_merges)
 
 
-def maybe_download_vocab(model_name="117M"):
+def maybe_download_vocab(model_name: str = "117M") -> None:
     url = "https://storage.googleapis.com/gpt-2/models/{}/".format(model_name)
 
     for filename in [

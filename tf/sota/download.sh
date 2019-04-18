@@ -15,7 +15,7 @@ function download () {
   fi
 }
 
-cd $DATA_ROOT
+cd ${DATA_ROOT}
 mkdir -p pretrained_xl && cd pretrained_xl
 
 # enwik8
