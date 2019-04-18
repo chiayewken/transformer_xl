@@ -45,10 +45,10 @@ class Vocab(object):
     def count_file(self, path, verbose=True, add_eos=False):
         if verbose:
             print("counting file {} ...".format(path))
-        assert tf.gfile.Exists(path)
+        assert tf.io.gfile.exists(path)
 
         sents = []
-        with tf.gfile.Open(path, "r") as f:
+        with tf.io.gfile.open(path, "r") as f:
             for idx, line in tqdm(enumerate(f)):
                 # printout not needed if using tqdm
                 # if verbose and idx > 0 and idx % 500000 == 0:
@@ -75,7 +75,7 @@ class Vocab(object):
         self.idx2sym = []
         self.sym2idx = OrderedDict()
 
-        with tf.gfile.Open(vocab_file, "r") as f:
+        with tf.io.gfile.open(vocab_file, "r") as f:
             for line in f:
                 symb = line.strip().split()[0]
                 self.add_symbol(symb)
@@ -114,9 +114,9 @@ class Vocab(object):
     ):
         if verbose:
             print("encoding file {} ...".format(path))
-        assert tf.gfile.Exists(path)
+        assert tf.io.gfile.exists(path)
         encoded = []
-        with tf.gfile.Open(path, "r") as f:
+        with tf.io.gfile.open(path, "r") as f:
             for idx, line in enumerate(f):
                 if verbose and idx > 0 and idx % 500000 == 0:
                     print("  line {}".format(idx))

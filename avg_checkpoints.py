@@ -14,10 +14,6 @@
 # limitations under the License.
 
 """Script to average values of variables in a list of checkpoint files."""
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import os
 import numpy as np
 import six
@@ -46,9 +42,9 @@ flags.DEFINE_string(
 
 def checkpoint_exists(path):
     return (
-        tf.gfile.Exists(path)
-        or tf.gfile.Exists(path + ".meta")
-        or tf.gfile.Exists(path + ".index")
+        tf.io.gfile.exists(path)
+        or tf.io.gfile.exists(path + ".meta")
+        or tf.io.gfile.exists(path + ".index")
     )
 
 

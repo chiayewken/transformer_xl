@@ -1,15 +1,13 @@
-from __future__ import absolute_import, division, print_function
-
 import json
 import os
 import pickle
 
-import tensorflow
+import tensorflow as tf
 from absl import flags
 from tqdm import tqdm
 
-from vocabulary_bpe import get_encoder
 from data_utils import get_bin_sizes, create_ordered_tfrecords
+from vocabulary_bpe import get_encoder
 
 
 class BPECorpus:
@@ -20,7 +18,7 @@ class BPECorpus:
         if self.dataset == "bookcorpus":
             # assumes train.txt has been sharded to avoid OOM eg train00, train01 etc
             train_path_pattern = os.path.join(path, "train*")
-            self.train = tensorflow.gfile.Glob(train_path_pattern)
+            self.train = tf.io.gfile.glob(train_path_pattern)
             self.valid = self.vocab.encode_file(os.path.join(path, "valid.txt"))
             self.test = self.vocab.encode_file(os.path.join(path, "test.txt"))
 
@@ -31,7 +29,7 @@ class BPECorpus:
                 "training-monolingual.tokenized.shuffled",
                 "news.en-*",
             )
-            self.train = tensorflow.gfile.Glob(train_path_pattern)
+            self.train = tf.io.gfile.glob(train_path_pattern)
             self.valid = self.vocab.encode_file(os.path.join(path, "valid.txt"))
             self.test = self.vocab.encode_file(os.path.join(path, "valid.txt"))
 
@@ -130,7 +128,7 @@ class BPECorpus:
 def get_lm_corpus(data_dir: str, dataset: str) -> BPECorpus:
     fn = os.path.join(data_dir, "cache.pkl")
 
-    if tensorflow.gfile.Exists(fn):
+    if tf.io.gfile.exists(fn):
         print("Loading cached dataset...")
         with open(fn, "rb") as fp:
             corpus = pickle.load(fp)
@@ -159,8 +157,8 @@ def main(unused_argv) -> None:
     corpus = get_lm_corpus(FLAGS.data_dir, FLAGS.dataset)
 
     save_dir = os.path.join(FLAGS.data_dir, "tfrecords")
-    if not tensorflow.gfile.Exists(save_dir):
-        tensorflow.gfile.MakeDirs(save_dir)
+    if not tf.io.gfile.exists(save_dir):
+        tf.io.gfile.makedirs(save_dir)
 
     # test mode
     if FLAGS.per_host_test_bsz > 0:
@@ -221,4 +219,4 @@ if __name__ == "__main__":
     flags.DEFINE_integer("num_shuffle", 4, help="number of shuffles for lm1b")
     flags.DEFINE_bool("use_tpu", True, help="use tpu")
 
-    tensorflow.app.run(main)
+    tf.app.run(main)

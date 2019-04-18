@@ -455,7 +455,7 @@ def main(unused_argv) -> None:
             ckpt_state = tf.train.get_checkpoint_state(FLAGS.model_dir)
             eval_results = []
             for eval_checkpoint in ckpt_state.all_model_checkpoint_paths:
-                if not tf.gfile.Exists(eval_checkpoint + ".index"):
+                if not tf.io.gfile.exists(eval_checkpoint + ".index"):
                     continue
                 global_step = int(eval_checkpoint.split("-")[-1])
                 if (

@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd890f36-283d-43c1-bd07-61fc7c3fcea7" name="Default Changelist" comment="remove pytorch, add type hints">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/229f6e47396aa3a11dc5c31ef02dee8da41383cf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/533571363f62be2703e486a51bb6cd18b2123e6b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/7/573b4847634d7cbc678651eae6a1068bda3cbd2d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7d213ffe30c3065243d4bc7697183b9604519fe0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b71dc4e666423e35044551f5126412c4764b8d89" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/0/c05c1c1cf255d6ec83cd2e744cdbd893365d140e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    <list default="true" id="dd890f36-283d-43c1-bd07-61fc7c3fcea7" name="Default Changelist" comment="tf.gfile -&gt; tf.io.gfile">
+      <change afterPath="$PROJECT_DIR$/tpu_estimator_from_tensorflow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/avg_checkpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/avg_checkpoints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpu_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_utils_bpe.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_utils_bpe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpu_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/tpu_estimator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_gpu.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vocabulary.py" beforeDir="false" afterPath="$PROJECT_DIR$/vocabulary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vocabulary_bpe.py" beforeDir="false" afterPath="$PROJECT_DIR$/vocabulary_bpe.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,12 +34,12 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vocabulary_bpe.py">
+        <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2826">
-              <caret line="157" column="40" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
+            <state relative-caret-position="387">
+              <caret line="401" column="5" lean-forward="true" selection-start-line="401" selection-start-column="5" selection-end-line="401" selection-end-column="5" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,15 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>disable</find>
-      <find>disable_tqdm</find>
-      <find>tqdm</find>
-      <find>corpus</find>
-      <find>corpus-info</find>
-      <find>bpe_merges</find>
-      <find>cache</find>
-      <find>preprocess</find>
-      <find>get_bin</find>
       <find>inp_cnts</find>
       <find>record_info</find>
       <find>n_token</find>
@@ -80,10 +65,31 @@
       <find>exists</find>
       <find>all done</find>
       <find>all</find>
+      <find>f</find>
+      <find>future</find>
+      <find>tensorflow</find>
+      <find>tf.gfile.</find>
+      <find>tf.io.gfile.tf.io.gfile</find>
+      <find>Glob(</find>
+      <find>Makedir</find>
+      <find>gfile.Exists</find>
+      <find>gfile.Open</find>
+      <find>gfile.</find>
+      <find>tpu_estimator</find>
+      <find>track_mean</find>
+      <find>cache_fn</find>
+      <find>train_cache</find>
     </findStrings>
     <replaceStrings>
       <replace>tf.gfile.Makedirs(</replace>
       <replace>tf.gfile.Exists(</replace>
+      <replace>tf.io.gfile.</replace>
+      <replace>tf.io.gfile</replace>
+      <replace>glob(</replace>
+      <replace>makedir</replace>
+      <replace>gfile.exists</replace>
+      <replace>gfile.open</replace>
+      <replace>tf</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -107,13 +113,16 @@
         <option value="$PROJECT_DIR$/model.py" />
         <option value="$PROJECT_DIR$/vocabulary.py" />
         <option value="$PROJECT_DIR$/vocabulary_bpe.py" />
+        <option value="$PROJECT_DIR$/avg_checkpoints.py" />
+        <option value="$PROJECT_DIR$/data_utils_bpe.py" />
+        <option value="$PROJECT_DIR$/tpu_estimator.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="945" />
-    <option name="width" value="980" />
-    <option name="height" value="1090" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -141,9 +150,10 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tpu_estimator_from_tensorflow.py" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/tpu_estimator_from_tensorflow.py" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -182,7 +192,7 @@
       <workItem from="1555528232313" duration="3820000" />
       <workItem from="1555572336099" duration="948000" />
       <workItem from="1555573845890" duration="2898000" />
-      <workItem from="1555580208119" duration="1270000" />
+      <workItem from="1555580208119" duration="4132000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1555494996573</created>
@@ -205,21 +215,28 @@
       <option name="project" value="LOCAL" />
       <updated>1555578390521</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactoring, optimize imports, remove support for python 2, remove support for gpu">
+      <created>1555581646685</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555581646685</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22742000" />
+    <option name="totallyTimeSpent" value="25604000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="756" y="0" width="784" height="872" extended-state="0" />
+    <frame x="762" y="0" width="781" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.36753246" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.36636245" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32799014" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.29397294" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Version Control" order="4" weight="0.3292232" />
@@ -230,7 +247,7 @@
       <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info active="true" anchor="bottom" id="TODO" order="12" visible="true" weight="0.3292232" />
       <window_info anchor="bottom" id="SonarLint" order="13" weight="0.32841328" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.3296433" />
       <window_info anchor="right" id="Database" order="0" />
@@ -274,7 +291,9 @@
     <MESSAGE value="Test" />
     <MESSAGE value="avoid nested tqdm" />
     <MESSAGE value="remove pytorch, add type hints" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove pytorch, add type hints" />
+    <MESSAGE value="refactoring, optimize imports, remove support for python 2, remove support for gpu" />
+    <MESSAGE value="tf.gfile -&gt; tf.io.gfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="tf.gfile -&gt; tf.io.gfile" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/tf/setup.sh" />
@@ -321,24 +340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/getdata.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -370,18 +371,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpu_estimator.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vocabulary.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -398,6 +387,43 @@
           <caret line="157" column="40" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpu_estimator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="486" column="42" lean-forward="true" selection-start-line="486" selection-start-column="42" selection-end-line="486" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="401" column="5" lean-forward="true" selection-start-line="401" selection-start-column="5" selection-end-line="401" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

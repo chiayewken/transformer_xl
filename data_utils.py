@@ -70,7 +70,7 @@ class Corpus(object):
         elif self.dataset == "bookcorpus":
             # assumes train.txt has been sharded to avoid OOM eg train00, train01 etc
             train_path_pattern = os.path.join(path, "train*")
-            train_paths = tf.gfile.Glob(train_path_pattern)
+            train_paths = tf.io.gfile.glob(train_path_pattern)
             # build vocab from wikitext-103 train otherwise we'll have 1.5mil tokens
             self.vocab.count_file(os.path.join(path, "../wikitext-103/train.txt"))
 
@@ -81,7 +81,7 @@ class Corpus(object):
                 "training-monolingual.tokenized.shuffled",
                 "news.en-*",
             )
-            train_paths = tf.gfile.Glob(train_path_pattern)
+            train_paths = tf.io.gfile.glob(train_path_pattern)
             # the vocab will load from file when build_vocab() is called
             # for train_path in sorted(train_paths):
             #   self.vocab.count_file(train_path, verbose=True)
@@ -438,7 +438,7 @@ def create_ordered_tfrecords(
 def get_lm_corpus(data_dir: str, dataset: str) -> Corpus:
     fn = os.path.join(data_dir, "cache.pkl")
 
-    if tf.gfile.Exists(fn):
+    if tf.io.gfile.exists(fn):
         print("Loading cached dataset...")
         with open(fn, "rb") as fp:
             corpus = pickle.load(fp)
@@ -492,8 +492,8 @@ def main(unused_argv) -> None:
     corpus = get_lm_corpus(FLAGS.data_dir, FLAGS.dataset)
 
     save_dir = os.path.join(FLAGS.data_dir, "tfrecords")
-    if not tf.gfile.Exists(save_dir):
-        tf.gfile.tf.gfile.Makedirs(save_dir)
+    if not tf.io.gfile.exists(save_dir):
+        tf.io.gfile.makedirs(save_dir)
 
     # test mode
     if FLAGS.per_host_test_bsz > 0:
