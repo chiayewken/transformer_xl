@@ -149,6 +149,67 @@ elif [[ $1 == 'eval' ]]; then
         --eval_split=valid \
         ${@:2}
 
+elif [[ $1 == 'dynamic_eval' ]]; then
+    # Uses GPU only
+    NUM_CORE=1
+
+    # Testing
+    TEST_TGT_LEN=128
+    TEST_MEM_LEN=1600
+    TEST_CLAMP_LEN=1000
+
+    TEST_CKPT_PATH=${LOCAL_DIR}/model.ckpt-0
+    TEST_BSZ=1
+    TEST_NUM_CORE=1
+    export CUDA_VISIBLE_DEVICES=0
+
+
+    echo 'Preprocess test set...'
+    python data_utils.py \
+        --data_dir=${LOCAL_DIR}/ \
+        --dataset=${DATASET} \
+        --tgt_len=${TEST_TGT_LEN} \
+        --per_host_test_bsz=1 \
+        --num_passes=1 \
+        --use_tpu=False
+
+
+    python data_utils.py \
+        --data_dir=${LOCAL_DIR}/ \
+        --dataset=wt103 \
+        --tgt_len=${TEST_TGT_LEN} \
+        --per_host_test_bsz=0 \
+        --num_passes=1 \
+        --use_tpu=False
+
+    echo 'Run evaluation on test set...'
+    python dynamiceval_tf.py \
+        --data_dir=${LOCAL_DIR}/tfrecords \
+        --record_info_dir=${LOCAL_DIR}/tfrecords/ \
+        --corpus_info_path=${LOCAL_DIR}/corpus-info.json \
+        --eval_ckpt_path=${TEST_CKPT_PATH} \
+        --model_dir=${LOCAL_DIR}/model \
+        --learning_rate=0.000002\
+        --decay_rate=0 \
+        --epsilon=0.00001 \
+        --rms=True\
+        --untie_r=True \
+        --proj_share_all_but_first=True \
+        --num_core_per_host=${TEST_NUM_CORE} \
+        --n_layer=${N_LAYER} \
+        --d_model=${D_MODEL} \
+        --d_embed=${D_EMBED} \
+        --n_head=${N_HEAD} \
+        --d_head=${D_HEAD} \
+        --d_inner=${D_INNER} \
+        --dropout=0.0 \
+        --dropatt=0.0 \
+        --tgt_len=${TEST_TGT_LEN} \
+        --mem_len=${TEST_MEM_LEN} \
+        --clamp_len=${TEST_CLAMP_LEN} \
+        --eval_split=test\
+        --same_length=True
+
 else
     echo 'unknown argment 1'
 fi
