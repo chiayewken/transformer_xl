@@ -146,7 +146,7 @@ elif [[ $1 == 'eval' ]]; then
         --use_tpu=True \
         --do_train=False \
         --do_eval_only=True \
-        --eval_split=test \
+        --eval_split=valid \
         ${@:2}
 
 else
