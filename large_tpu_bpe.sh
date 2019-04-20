@@ -140,7 +140,7 @@ elif [[ $1 == 'eval' ]]; then
         --mem_len=${TEST_MEM_LEN} \
         --clamp_len=${TEST_CLAMP_LEN} \
         --same_length=True \
-        --eval_batch_size=${TEST_BSZ} \
+        --eval_batch_size=${VALID_BSZ} \
         --num_host=${TEST_NUM_HOST} \
         --num_core_per_host=${TEST_NUM_CORE} \
         --use_tpu=True \
