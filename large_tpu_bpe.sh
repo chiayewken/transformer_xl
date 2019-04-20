@@ -165,7 +165,7 @@ elif [[ $1 == 'dynamic_eval' ]]; then
 
 
     echo 'Preprocess test set...'
-    python data_utils.py \
+    python data_utils_bpe.py \
         --data_dir=${LOCAL_DIR}/ \
         --dataset=${DATASET} \
         --tgt_len=${TEST_TGT_LEN} \
@@ -174,7 +174,7 @@ elif [[ $1 == 'dynamic_eval' ]]; then
         --use_tpu=False
 
 
-    python data_utils.py \
+    python data_utils_bpe.py \
         --data_dir=${LOCAL_DIR}/ \
         --dataset=wt103 \
         --tgt_len=${TEST_TGT_LEN} \
