@@ -103,8 +103,8 @@ elif [[ $1 == 'train' ]]; then
         --n_head=${N_HEAD} \
         --d_head=${D_HEAD} \
         --d_inner=${D_INNER} \
-        --dropout=0.2 \
-        --dropatt=0.2 \
+        --dropout=0.0 \
+        --dropatt=0.0 \
         --init_std=0.005 \
         --learning_rate=0.00025 \
         --warmup_steps=16000 \
