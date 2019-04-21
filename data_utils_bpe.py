@@ -22,7 +22,7 @@ class BPECorpus:
             self.valid = self.vocab.encode_file(os.path.join(path, "valid.txt"))
             self.test = self.vocab.encode_file(os.path.join(path, "test.txt"))
 
-        if self.dataset == "storiescorpus":
+        if self.dataset == "stories_corpus":
             # assumes train.txt has been sharded to avoid OOM eg train00, train01 etc
             train_path_pattern = os.path.join(path, "*train.txt")
             self.train = tf.io.gfile.glob(train_path_pattern)
