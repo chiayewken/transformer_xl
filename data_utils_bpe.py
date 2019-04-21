@@ -209,7 +209,16 @@ if __name__ == "__main__":
     flags.DEFINE_enum(
         "dataset",
         "wt103",
-        ["ptb", "wt2", "wt103", "lm1b", "enwik8", "text8", "bookcorpus"],
+        [
+            "ptb",
+            "wt2",
+            "wt103",
+            "lm1b",
+            "enwik8",
+            "text8",
+            "bookcorpus",
+            "stories_corpus",
+        ],
         help="Dataset name.",
     )
     flags.DEFINE_integer("per_host_train_bsz", 60, help="train batch size each host")

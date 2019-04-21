@@ -1,28 +1,20 @@
 #!/bin/bash
 
-echo mode: $1
-echo gsutil dir: $2
-
-# num_passes repeats data
-# default is 10 to mitigate TPU dropping remainder on small datasets
-# should be able to set to 1 on large datasets
-echo num training passes: $3
-echo dataset: $4
-echo local_dir: $5
-
-# Path
-# trailing "/" uncecessary
-LOCAL_DIR=$5
-# eg ../data/wikitext-103
 GSDATA=$2
 GSEXP=$2
-DATASET=$4
-# eg wt103
+DATASET=$3
+LOCAL_DIR=data/$3
+DROPOUT=$4
+
+echo mode: $1
+echo gsutil dir: ${GSDATA}
+echo dataset: ${DATASET}
+echo local_dir: ${LOCAL_DIR}
+echo dropout_rate: ${DROPOUT}
 
 # TPU setting
 NUM_HOST=1 # Colab TPUv2 -> 1 | Depends on TPU configuration eg pods have more
 NUM_CORE=8 # TPUv2 -> 8 | TPUv3 -> 16
-
 TEST_NUM_HOST=1
 TEST_NUM_CORE=8 # TPUv2 -> 8 | TPUv3 -> 16
 
@@ -41,11 +33,13 @@ D_INNER=4096
 # Align to sota/wt103.sh
 TGT_LEN=256
 MEM_LEN=256
-# TRAIN_BSZ=128
-# VALID_BSZ=128
 # BSZ 64 + Colab TPU ->  Used 8.91G of 8.00G hbm
 TRAIN_BSZ=32
 VALID_BSZ=32
+# num_passes repeats data
+# default is 10 to mitigate TPU dropping remainder on small datasets
+# should be able to set to 1 on large datasets
+NUM_PASSES=1
 
 # Testing
 #TEST_TGT_LEN=128
@@ -63,7 +57,7 @@ if [[ $1 == 'train_data' ]]; then
         --per_host_train_bsz=${TRAIN_BSZ} \
         --per_host_valid_bsz=${VALID_BSZ} \
         --num_core_per_host=${NUM_CORE} \
-        --num_passes=$3 \
+        --num_passes=${NUM_PASSES} \
         --use_tpu=True \
         ${@:2}
 
@@ -103,8 +97,8 @@ elif [[ $1 == 'train' ]]; then
         --n_head=${N_HEAD} \
         --d_head=${D_HEAD} \
         --d_inner=${D_INNER} \
-        --dropout=0.2 \
-        --dropatt=0.2 \
+        --dropout=${DROPOUT} \
+        --dropatt=${DROPOUT} \
         --init_std=0.005 \
         --learning_rate=0.00025 \
         --warmup_steps=16000 \
