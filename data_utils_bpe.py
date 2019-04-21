@@ -89,10 +89,10 @@ class BPECorpus:
         # training will throw ValueError: Dimension -56279 must be >= 0
         # eg 200k cutoff > 57k bpe vocab size)
         # self.cutoffs = [0, 20000, 40000, 200000] + [len(self.vocab)]
-        if self.dataset in ["wt103", "bookcorpus"]:
-            self.cutoffs = [0, 20000, 40000] + [len(self.vocab)]
-        else:
-            self.cutoffs = []
+        # if self.dataset in ["wt103", "bookcorpus"]:
+        #     self.cutoffs = [0, 20000, 40000] + [len(self.vocab)]
+        # else:
+        self.cutoffs = []
 
     def convert_to_tfrecords(
         self,

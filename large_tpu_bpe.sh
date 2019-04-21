@@ -130,6 +130,8 @@ elif [[ $1 == 'eval' ]]; then
         --n_head=${N_HEAD} \
         --d_head=${D_HEAD} \
         --d_inner=${D_INNER} \
+        --dropout=0.0 \
+        --dropatt=0.0 \
         --tgt_len=${TEST_TGT_LEN} \
         --mem_len=${TEST_MEM_LEN} \
         --clamp_len=${TEST_CLAMP_LEN} \
@@ -205,5 +207,5 @@ elif [[ $1 == 'dynamic_eval' ]]; then
         --same_length=True
 
 else
-    echo 'unknown argment 1'
+    echo 'unknown argument 1'
 fi
