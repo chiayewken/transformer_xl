@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd890f36-283d-43c1-bd07-61fc7c3fcea7" name="Default Changelist" comment="dynamic eval">
-      <change afterPath="$PROJECT_DIR$/large_tpu_bpe_no_dropout.sh" afterDir="false" />
+    <list default="true" id="dd890f36-283d-43c1-bd07-61fc7c3fcea7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/prep_text8.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/large_tpu_bpe.sh" beforeDir="false" afterPath="$PROJECT_DIR$/large_tpu_bpe.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prep_text8.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpu_estimator_from_tensorflow.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,20 +28,28 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/large_tpu_bpe_no_dropout.sh">
+        <entry file="file://$PROJECT_DIR$/prep_text8.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="106" column="21" selection-start-line="106" selection-start-column="21" selection-end-line="106" selection-end-column="21" />
+            <state relative-caret-position="432">
+              <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+              <folding>
+                <element signature="e#38#47#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>all</find>
-      <find>f</find>
       <find>future</find>
       <find>tensorflow</find>
       <find>tf.gfile.</find>
@@ -73,6 +78,8 @@
       <find>data_utils.</find>
       <find>valid</find>
       <find>dropout</find>
+      <find>get_bin_</find>
+      <find>text8</find>
     </findStrings>
     <replaceStrings>
       <replace>tf.gfile.Makedirs(</replace>
@@ -109,10 +116,10 @@
         <option value="$PROJECT_DIR$/avg_checkpoints.py" />
         <option value="$PROJECT_DIR$/tpu_estimator.py" />
         <option value="$PROJECT_DIR$/train.py" />
-        <option value="$PROJECT_DIR$/data_utils_bpe.py" />
         <option value="$PROJECT_DIR$/large_tpu_bpe.sh" />
-        <option value="$PROJECT_DIR$/prep_text8.py" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_no_dropout.sh" />
+        <option value="$PROJECT_DIR$/data_utils_bpe.py" />
+        <option value="$PROJECT_DIR$/prep_text8.py" />
       </list>
     </option>
   </component>
@@ -261,11 +268,25 @@
       <option name="project" value="LOCAL" />
       <updated>1555782457794</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="try no dropout">
+      <created>1555783955196</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1555783955196</updated>
+    </task>
+    <task id="LOCAL-00011" summary="cutoffs">
+      <created>1555811773813</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1555811773813</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43990000" />
+    <option name="totallyTimeSpent" value="45994000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -281,7 +302,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.41199479" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.41199479" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.29346487" />
@@ -354,7 +375,9 @@
     <MESSAGE value="for eval, edit eval_split to reference correct tfrecord info file" />
     <MESSAGE value="valid batch size" />
     <MESSAGE value="dynamic eval" />
-    <option name="LAST_COMMIT_MESSAGE" value="dynamic eval" />
+    <MESSAGE value="try no dropout" />
+    <MESSAGE value="cutoffs" />
+    <option name="LAST_COMMIT_MESSAGE" value="cutoffs" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/tf/setup.sh" />
@@ -408,16 +431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2826">
           <caret line="157" column="40" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -481,22 +494,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-842">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3276">
           <caret line="182" column="23" lean-forward="true" selection-start-line="182" selection-start-column="23" selection-end-line="182" selection-end-column="23" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prep_text8.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tpu_estimator_from_tensorflow.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -539,6 +542,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="106" column="21" selection-start-line="106" selection-start-column="21" selection-end-line="106" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="62" column="58" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prep_text8.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding>
+            <element signature="e#38#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
