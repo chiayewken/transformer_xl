@@ -1,13 +1,47 @@
 import json
 import os
 import pickle
+from functools import partial
+from typing import List
 
 import tensorflow as tf
 from absl import flags
 from tqdm import tqdm
+from multiprocessing import Pool
 
 from data_utils import get_bin_sizes, create_ordered_tfrecords
-from vocabulary_bpe import get_encoder
+from vocabulary_bpe import get_encoder, Encoder
+
+
+def preprocess(
+    idx_shard: int,
+    train: List[str],
+    vocab: Encoder,
+    save_dir: str,
+    cutoffs: List[int],
+    bin_sizes: List[int],
+    bsz: int,
+    tgt_len: int,
+    num_core_per_host: int,
+    use_tpu: bool,
+) -> (List[str], int):
+    path = train[idx_shard]
+    data_shard = vocab.encode_file(path, disable_tqdm=True)
+
+    basename = "train-{:03d}".format(idx_shard)
+    file_name, num_batch = create_ordered_tfrecords(
+        save_dir=save_dir,
+        basename=basename,
+        data=data_shard,
+        batch_size=bsz,
+        tgt_len=tgt_len,
+        num_core_per_host=num_core_per_host,
+        cutoffs=cutoffs,
+        bin_sizes=bin_sizes,
+        use_tpu=use_tpu,
+        disable_tqdm=True,  # tqdm in inner loop doesn't display well
+    )
+    return [file_name], num_batch
 
 
 class BPECorpus:
@@ -92,24 +126,49 @@ class BPECorpus:
             )
             num_batch = 0
 
-            for shard, path in tqdm(enumerate(self.train), total=len(self.train)):
-                # nested tqdms misbehave in colab
-                data_shard = self.vocab.encode_file(path, disable_tqdm=True)
-                basename = "train-{:03d}".format(shard)
-                file_name, num_batch_ = create_ordered_tfrecords(
-                    save_dir,
-                    basename,
-                    data_shard,
-                    bsz,
-                    tgt_len,
-                    num_core_per_host,
-                    self.cutoffs,
-                    bin_sizes,
-                    use_tpu=use_tpu,
-                    disable_tqdm=True,
+            # for idx_shard, path in tqdm(enumerate(self.train), total=len(self.train)):
+            #     # nested tqdms misbehave in colab
+            #     data_shard = self.vocab.encode_file(path, disable_tqdm=True)
+            #     basename = "train-{:03d}".format(idx_shard)
+            #     file_name, num_batch_ = create_ordered_tfrecords(
+            #         save_dir,
+            #         basename,
+            #         data_shard,
+            #         bsz,
+            #         tgt_len,
+            #         num_core_per_host,
+            #         self.cutoffs,
+            #         bin_sizes,
+            #         use_tpu=use_tpu,
+            #         disable_tqdm=True,
+            #     )
+            #     file_names.append(file_name)
+            #     num_batch += num_batch_
+
+            _preprocess = partial(
+                preprocess,
+                train=self.train,
+                vocab=self.vocab,
+                save_dir=save_dir,
+                cutoffs=self.cutoffs,
+                bin_sizes=bin_sizes,
+                bsz=bsz,
+                tgt_len=tgt_len,
+                num_core_per_host=num_core_per_host,
+                use_tpu=use_tpu,
+            )
+            num_files = len(self.train)
+            # If processes is None then the number returned by os.cpu_count() is used
+            with Pool(processes=None) as pool:
+                results = list(
+                    tqdm(
+                        pool.imap_unordered(_preprocess, range(num_files)),
+                        total=num_files,
+                    )
                 )
-                file_names.append(file_name)
-                num_batch += num_batch_
+            for res in results:
+                file_names.extend(res[0])
+                num_batch += res[1]
 
         else:
             data = getattr(self, split)
@@ -241,5 +300,4 @@ if __name__ == "__main__":
     flags.DEFINE_integer("num_passes", 10, help="number of passes when use_tpu=True")
     flags.DEFINE_integer("num_shuffle", 4, help="number of shuffles for lm1b")
     flags.DEFINE_bool("use_tpu", True, help="use tpu")
-
     tf.app.run(main)
