@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd890f36-283d-43c1-bd07-61fc7c3fcea7" name="Default Changelist" comment="">
+    <list default="true" id="dd890f36-283d-43c1-bd07-61fc7c3fcea7" name="Default Changelist" comment="warmup steps x2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_utils_bpe.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_utils_bpe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/large_tpu_bpe.sh" beforeDir="false" afterPath="$PROJECT_DIR$/large_tpu_bpe.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vocabulary_bpe.py" beforeDir="false" afterPath="$PROJECT_DIR$/vocabulary_bpe.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,13 +29,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
+        <entry file="file://$PROJECT_DIR$/large_tpu_bpe.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="94" column="11" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="243">
+              <caret line="102" column="35" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -51,24 +48,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TEST_NUM_HOST</find>
-      <find>TEST</find>
-      <find>VALID_BSZ</find>
-      <find>tpu</find>
-      <find>warmup</find>
-      <find>get_model_fn</find>
-      <find>dynamic_eval</find>
-      <find>numpass</find>
-      <find>EXP</find>
-      <find>get_lm_corpus</find>
-      <find>data_utils</find>
-      <find>get_corpus</find>
-      <find>data_utils.</find>
-      <find>valid</find>
-      <find>dropout</find>
       <find>get_bin_</find>
       <find>text8</find>
-      <find>cutoffs</find>
       <find>shuffle</find>
       <find>tqdm</find>
       <find>$2</find>
@@ -81,6 +62,22 @@
       <find>shard</find>
       <find>file_names</find>
       <find>num_batch</find>
+      <find>cutoffs</find>
+      <find>clipping</find>
+      <find>cutoff</find>
+      <find>&quot;clip&quot;</find>
+      <find>flags.clip</find>
+      <find>event</find>
+      <find>summary</find>
+      <find>write</find>
+      <find>sum</find>
+      <find>save</find>
+      <find>warmup</find>
+      <find>mul_adaptive</find>
+      <find>encoder</find>
+      <find>decoder</find>
+      <find>mode</find>
+      <find>position</find>
     </findStrings>
     <replaceStrings>
       <replace>tf.gfile.Makedirs(</replace>
@@ -114,22 +111,22 @@
         <option value="$PROJECT_DIR$/data_utils.py" />
         <option value="$PROJECT_DIR$/train_gpu.py" />
         <option value="$PROJECT_DIR$/gpu_utils.py" />
-        <option value="$PROJECT_DIR$/model.py" />
         <option value="$PROJECT_DIR$/vocabulary.py" />
-        <option value="$PROJECT_DIR$/vocabulary_bpe.py" />
         <option value="$PROJECT_DIR$/avg_checkpoints.py" />
         <option value="$PROJECT_DIR$/tpu_estimator.py" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_no_dropout.sh" />
         <option value="$PROJECT_DIR$/prep_text8.py" />
-        <option value="$PROJECT_DIR$/train.py" />
-        <option value="$PROJECT_DIR$/large_tpu_bpe.sh" />
         <option value="$PROJECT_DIR$/data_utils_bpe.py" />
+        <option value="$PROJECT_DIR$/vocabulary_bpe.py" />
+        <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/model.py" />
+        <option value="$PROJECT_DIR$/large_tpu_bpe.sh" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
+    <option name="x" value="951" />
+    <option name="width" value="978" />
     <option name="height" value="1088" />
   </component>
   <component name="ProjectView">
@@ -328,11 +325,25 @@
       <option name="project" value="LOCAL" />
       <updated>1555840661292</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="cutoffs">
+      <created>1555841960987</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1555841960987</updated>
+    </task>
+    <task id="LOCAL-00019" summary="warmup steps x2">
+      <created>1555925396152</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1555925396152</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59569000" />
+    <option name="totallyTimeSpent" value="72562000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -344,11 +355,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="870" extended-state="0" />
+    <frame x="761" y="0" width="782" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.46284226" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.4622396" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.29346487" />
@@ -422,13 +433,14 @@
     <MESSAGE value="valid batch size" />
     <MESSAGE value="dynamic eval" />
     <MESSAGE value="try no dropout" />
-    <MESSAGE value="cutoffs" />
     <MESSAGE value="prep_text8" />
     <MESSAGE value="storiescorpus" />
     <MESSAGE value="stories_corpus" />
     <MESSAGE value="fix minor conditions bug" />
     <MESSAGE value="multiprocessing for preprocessing" />
-    <option name="LAST_COMMIT_MESSAGE" value="multiprocessing for preprocessing" />
+    <MESSAGE value="cutoffs" />
+    <MESSAGE value="warmup steps x2" />
+    <option name="LAST_COMMIT_MESSAGE" value="warmup steps x2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -479,32 +491,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vocabulary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="https://github.com/benkrause/dynamiceval-transformer.git">
       <provider selected="true" editor-type-id="httpFileEditor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpu_estimator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="486" column="42" selection-start-line="486" selection-start-column="42" selection-end-line="486" selection-end-column="42" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/wt103_large_tpu.sh">
       <provider selected="true" editor-type-id="text-editor">
@@ -578,40 +566,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vocabulary_bpe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe_no_dropout.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1274">
           <caret line="106" column="21" selection-start-line="106" selection-start-column="21" selection-end-line="106" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6516">
-          <caret line="372" column="20" selection-start-line="372" selection-start-column="13" selection-end-line="372" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5879">
-          <caret line="342" column="16" lean-forward="true" selection-start-line="342" selection-start-column="16" selection-end-line="342" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -622,20 +580,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/large_tpu_bpe.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-554">
-          <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="94" column="11" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
+        <state relative-caret-position="261">
+          <caret line="89" column="24" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="24" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="427" column="31" selection-start-line="427" selection-start-column="26" selection-end-line="427" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vocabulary_bpe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="670">
+          <caret line="161" column="64" selection-start-line="161" selection-start-column="64" selection-end-line="161" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vocabulary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpu_estimator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8532">
+          <caret line="486" column="42" selection-start-line="486" selection-start-column="42" selection-end-line="486" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4712">
+          <caret line="171" column="41" selection-start-line="171" selection-start-column="41" selection-end-line="171" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="681" column="29" lean-forward="true" selection-start-line="681" selection-start-column="29" selection-end-line="681" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/large_tpu_bpe.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="102" column="35" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
         </state>
       </provider>
     </entry>

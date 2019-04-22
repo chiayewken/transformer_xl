@@ -52,7 +52,9 @@ def get_pairs(word: tuple) -> set:
 
 
 class Encoder:
-    def __init__(self, encoder: dict, bpe_merges: List[tuple], errors="replace"):
+    def __init__(
+        self, encoder: dict, bpe_merges: List[tuple], errors: str = "replace"
+    ) -> None:
         self.map_encode = encoder
         self.map_decode = {v: k for k, v in self.map_encode.items()}
         self.errors = errors  # how to handle errors in decoding
@@ -66,7 +68,7 @@ class Encoder:
             r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+"""
         )
 
-    def bpe(self, token):
+    def bpe(self, token: str):
         if token in self.cache:
             return self.cache[token]
         word = tuple(token)
