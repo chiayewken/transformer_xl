@@ -83,7 +83,6 @@ elif [[ $1 == 'test_data' ]]; then
 
 elif [[ $1 == 'train' ]]; then
     echo 'Run training...'
-    # warmup_steps=16000*2 doesn't prevent divergence
     python train.py \
         --data_dir=${GSDATA}/${DATASET}-tfrecords \
         --record_info_dir=${LOCAL_DIR}/tfrecords/ \
@@ -101,7 +100,7 @@ elif [[ $1 == 'train' ]]; then
         --dropout=${DROPOUT} \
         --dropatt=${DROPOUT} \
         --init_std=0.005 \
-        --learning_rate=0.00025 / 2 \
+        --learning_rate=0.00025 \
         --warmup_steps=16000 \
         --train_steps=4000000 \
         --tgt_len=${TGT_LEN} \
