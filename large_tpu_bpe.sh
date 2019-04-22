@@ -101,7 +101,7 @@ elif [[ $1 == 'train' ]]; then
         --dropatt=${DROPOUT} \
         --init_std=0.005 \
         --learning_rate=0.00025 \
-        --warmup_steps=16000 \
+        --warmup_steps=16000 * 2 \
         --train_steps=4000000 \
         --tgt_len=${TGT_LEN} \
         --mem_len=${MEM_LEN} \
