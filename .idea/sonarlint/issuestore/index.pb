@@ -20,8 +20,6 @@ B
 avg_checkpoints.py,1\5\152830feea39926f43794675e1e691da7f6a1353
 =
 data_utils.py,8\b\8b726531151dde801d5207fdca1abe5b31002eaa
-P
- tpu_estimator_from_tensorflow.py,8\8\886202eb66c4010fee3a8d117335604310d5b1d4
 =
 vocabulary.py,a\8\a8b6f3c681b2d9d25d841ec3b8dc2ae72650d330
 8
