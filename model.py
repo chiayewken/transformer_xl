@@ -695,4 +695,4 @@ def transformer(
             head_target=head_target,
             proj_same_dim=proj_same_dim,
         )
-        return loss, new_mems
+        return loss, new_mems, output
