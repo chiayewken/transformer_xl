@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd890f36-283d-43c1-bd07-61fc7c3fcea7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/large_tpu_bpe_lr_divide_2.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/large_tpu_bpe_warmup_32k.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/large_tpu_bpe.sh" beforeDir="false" afterPath="$PROJECT_DIR$/large_tpu_bpe.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh" beforeDir="false" afterPath="$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,10 +30,13 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/large_tpu_bpe_warmup_32k.sh">
+        <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            <state relative-caret-position="549">
+              <caret line="241" column="85" lean-forward="true" selection-start-line="241" selection-start-column="85" selection-end-line="241" selection-end-column="85" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,8 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shuffle</find>
-      <find>tqdm</find>
       <find>$2</find>
       <find>local_dir</find>
       <find>$3</find>
@@ -80,6 +80,8 @@
       <find>position</find>
       <find>11``</find>
       <find>main(</find>
+      <find>optim</find>
+      <find>model.transformer</find>
     </findStrings>
     <replaceStrings>
       <replace>tf.gfile.Makedirs(</replace>
@@ -120,18 +122,20 @@
         <option value="$PROJECT_DIR$/prep_text8.py" />
         <option value="$PROJECT_DIR$/data_utils_bpe.py" />
         <option value="$PROJECT_DIR$/vocabulary_bpe.py" />
-        <option value="$PROJECT_DIR$/train.py" />
-        <option value="$PROJECT_DIR$/model.py" />
         <option value="$PROJECT_DIR$/large_tpu_bpe.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_warmup_32k.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_lr_divide_2.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh" />
+        <option value="$PROJECT_DIR$/large_tpu_bpe_warmup_64k.sh" />
+        <option value="$PROJECT_DIR$/model.py" />
+        <option value="$PROJECT_DIR$/train.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="951" />
+    <option name="y" value="1" />
+    <option name="width" value="978" />
     <option name="height" value="1088" />
   </component>
   <component name="ProjectView">
@@ -140,7 +144,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +155,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -161,10 +165,10 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/large_tpu_bpe.sh" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/large_tpu_bpe_warmup_32k.sh" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/large_tpu_bpe.sh" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/large_tpu_bpe_warmup_32k.sh" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
@@ -211,6 +215,7 @@
       <workItem from="1555573845890" duration="2898000" />
       <workItem from="1555580208119" duration="8038000" />
       <workItem from="1555681036812" duration="2453000" />
+      <workItem from="1556037032536" duration="288000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1555494996573</created>
@@ -359,11 +364,25 @@
       <option name="project" value="LOCAL" />
       <updated>1555952795316</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="lr warmups experiments">
+      <created>1555955686484</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1555955686484</updated>
+    </task>
+    <task id="LOCAL-00023" summary="warmups 64k steps">
+      <created>1555956291558</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1555956291558</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74879000" />
+    <option name="totallyTimeSpent" value="79134000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -375,11 +394,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="762" y="0" width="781" height="870" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26206" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26171875" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.29346487" />
@@ -462,7 +481,9 @@
     <MESSAGE value="warmup steps x2" />
     <MESSAGE value="lr / 2, warmup_steps back to 16k" />
     <MESSAGE value="lr / 4 fork" />
-    <option name="LAST_COMMIT_MESSAGE" value="lr / 4 fork" />
+    <MESSAGE value="lr warmups experiments" />
+    <MESSAGE value="warmups 64k steps" />
+    <option name="LAST_COMMIT_MESSAGE" value="warmups 64k steps" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -556,11 +577,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpu_estimator_from_tensorflow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4104" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tpu_estimator_from_tensorflow.py" />
     <entry file="file://$PROJECT_DIR$/gpu_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -588,13 +605,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/large_tpu_bpe_no_dropout.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1274">
-          <caret line="106" column="21" selection-start-line="106" selection-start-column="21" selection-end-line="106" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/large_tpu_bpe_no_dropout.sh" />
     <entry file="file://$PROJECT_DIR$/sota/wt103.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -642,30 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpu_estimator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8532">
-          <caret line="486" column="42" selection-start-line="486" selection-start-column="42" selection-end-line="486" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="681" column="29" lean-forward="true" selection-start-line="681" selection-start-column="29" selection-end-line="681" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="151" column="9" selection-start-line="151" selection-end-line="152" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -689,8 +676,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe_warmup_32k.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
+        <state relative-caret-position="-756">
           <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/large_tpu_bpe_warmup_64k.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="102" column="18" lean-forward="true" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AndroidStudioProjects/50.003/KitchenApp/app/src/main/java/com/example/KitchenApp/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="697" column="37" selection-start-line="697" selection-start-column="37" selection-end-line="697" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpu_estimator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="486" column="42" selection-start-line="486" selection-start-column="42" selection-end-line="486" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="241" column="85" lean-forward="true" selection-start-line="241" selection-start-column="85" selection-end-line="241" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -211,7 +211,7 @@ def get_model_fn(
         tf.logging.info("Vocab size : {}".format(n_token))
         tf.logging.info("Batch size : {}".format(batch_size))
 
-        loss, new_mems = model.transformer(
+        loss, new_mems, output_last_layer = model.transformer(
             dec_inp=inp,
             target=tgt,
             mems=mems,
@@ -239,6 +239,7 @@ def get_model_fn(
             untie_r=FLAGS.untie_r,
             proj_same_dim=FLAGS.proj_same_dim,
         )
+        tf.logging.info("output_last_layer size: {}".format(output_last_layer.shape))
 
         total_loss = tf.reduce_mean(loss)
 
