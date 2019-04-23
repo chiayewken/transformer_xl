@@ -677,11 +677,13 @@ def transformer(
                 )
 
         output = tf.layers.dropout(output, dropout, training=is_training)
+
         tf.logging.info("output_shape: {}".format(output.shape))
         output = tf.keras.layers.LSTM(
             units=d_model, return_sequences=True, stateful=True
         )(output)
         tf.logging.info("output_shape: {}".format(output.shape))
+
         logsoftmax_fn = mul_adaptive_logsoftmax if use_tpu else mask_adaptive_logsoftmax
         loss = logsoftmax_fn(
             hidden=output,
