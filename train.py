@@ -95,6 +95,11 @@ flags.DEFINE_integer(
     default=10000,
     help="Which checkpoint to start with in `do_eval_only` mode.",
 )
+flags.DEFINE_integer(
+    "eval_interval",
+    default=100000,
+    help="Only eval specific steps to save time eg 100k, 200k, 300k...",
+)
 flags.DEFINE_string("eval_split", "valid", help="Which data split to evaluate.")
 
 # Model paramenters
@@ -461,7 +466,8 @@ def main(unused_argv) -> None:
                 global_step = int(eval_checkpoint.split("-")[-1])
                 if (
                     global_step < FLAGS.start_eval_steps
-                    or global_step > FLAGS.train_steps
+                    # or global_step > FLAGS.train_steps  # defaults stops eval after 100k steps
+                    or global_step % FLAGS.eval_interval != 0
                 ):
                     continue
                 ret = estimator.evaluate(
