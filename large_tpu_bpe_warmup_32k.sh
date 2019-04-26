@@ -120,7 +120,7 @@ elif [[ $1 == 'eval' ]]; then
         --data_dir=${GSDATA}/${DATASET}-tfrecords \
         --record_info_dir=${LOCAL_DIR}/tfrecords/ \
         --corpus_info_path=${LOCAL_DIR}/corpus-info.json \
-        --model_dir=${GSEXP}/${DATASET} \
+        --model_dir=${GSEXP}/${DATASET}_warmup_32k \
         --untie_r=True \
         --proj_share_all_but_first=True \
         --proj_same_dim=True \
