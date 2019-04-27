@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44654251-f0b6-4696-91d4-bfea27ac8a22" name="Default Changelist" comment="">
+    <list default="true" id="44654251-f0b6-4696-91d4-bfea27ac8a22" name="Default Changelist" comment="eval interval to save time, unversion .idea/">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path=".idea/" />
@@ -14,14 +16,9 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/train.py">
+        <entry file="file://$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="371" column="25" lean-forward="true" selection-start-line="371" selection-start-column="25" selection-end-line="371" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
+            <state relative-caret-position="-855" />
           </provider>
         </entry>
       </file>
@@ -31,12 +28,12 @@
     <findStrings>
       <find>model</find>
       <find>_with_lstm</find>
-      <find>model_dir</find>
       <find>eval</find>
       <find>num_eval_batch</find>
       <find>start_eval_steps</find>
       <find>train_steps</find>
       <find>global_ste</find>
+      <find>model_dir</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -49,10 +46,11 @@
         <option value="$PROJECT_DIR$/large_tpu_bpe_warmup_32k.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_warmup_64k.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm.sh" />
-        <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
         <option value="$PROJECT_DIR$/data_utils_bpe.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
+        <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh" />
       </list>
     </option>
   </component>
@@ -85,8 +83,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ken\Downloads\transformer_xl" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -138,17 +142,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556291973942</updated>
-      <workItem from="1556291984662" duration="602000" />
+      <workItem from="1556291984662" duration="1533000" />
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="eval interval to save time, unversion .idea/">
+      <created>1556292726120</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1556292726120</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4003000" />
+    <option name="totallyTimeSpent" value="4934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="757" y="0" width="784" height="871" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26103896" />
@@ -258,7 +268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-81">
@@ -269,11 +278,23 @@
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
-          <caret line="371" column="25" lean-forward="true" selection-start-line="371" selection-start-column="25" selection-end-line="371" selection-end-column="25" />
+          <caret line="371" column="10" selection-start-line="371" selection-start-column="10" selection-end-line="371" selection-end-column="10" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-855" />
       </provider>
     </entry>
   </component>
