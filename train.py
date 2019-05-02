@@ -1,7 +1,5 @@
 from typing import List
 
-import os
-import pickle
 import math
 import numpy as np
 import tensorflow as tf
@@ -346,14 +344,21 @@ def get_cache_fn(mem_len: int):
 
 class EvalManager:
     def __init__(self, model_dir: str) -> None:
-        self.path = os.path.join(model_dir, "eval_dict.pkl")
-        self.record: dict = {}
-        if not os.path.isfile(self.path):
+        self.path = "{}/eval_dict.pkl".format(model_dir)
+        self.record = {}
+        if not tf.io.gfile.exists(self.path):
             self.save()
-        self.record = pickle.load(open(self.path, "rb"))
+        self.record = self.load()
+
+    def load(self) -> dict:
+        with tf.Session() as sess:
+            d_string: str = sess.run(tf.io.read_file(self.path))
+            return eval(d_string)
 
     def save(self) -> None:
-        pickle.dump(self.record, open(self.path, "wb"))
+        with tf.Session() as sess:
+            sess.run(tf.io.write_file(self.path, str(self.record)))
+        print("saving eval record:", self.record)
 
 
 def main(unused_argv) -> None:
@@ -473,7 +478,6 @@ def main(unused_argv) -> None:
             tf.logging.info("=" * 200)
         else:
             eval_manager = EvalManager(FLAGS.model_dir)
-            print("eval_record:", eval_manager.record)
             ckpt_state = tf.train.get_checkpoint_state(FLAGS.model_dir)
             eval_results = []
             for eval_checkpoint in ckpt_state.all_model_checkpoint_paths:
