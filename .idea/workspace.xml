@@ -15,13 +15,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/train.py">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="356" lean-forward="true" selection-start-line="356" selection-end-line="356" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -32,12 +29,10 @@
     <findStrings>
       <find>model</find>
       <find>_with_lstm</find>
-      <find>eval</find>
       <find>num_eval_batch</find>
       <find>start_eval_steps</find>
       <find>train_steps</find>
       <find>global_ste</find>
-      <find>model_dir</find>
       <find>dataset</find>
       <find>input_fn</find>
       <find>seed</find>
@@ -45,6 +40,15 @@
       <find>interval</find>
       <find>os.path.join</find>
       <find>eval_record</find>
+      <find>tf.io</find>
+      <find>eval</find>
+      <find>train</find>
+      <find>managerf</find>
+      <find>model_dir</find>
+      <find>session</find>
+      <find>sess</find>
+      <find>mana</find>
+      <find>manager</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -58,12 +62,12 @@
         <option value="$PROJECT_DIR$/large_tpu_bpe_warmup_64k.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm.sh" />
         <option value="$PROJECT_DIR$/data_utils_bpe.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh" />
         <option value="$PROJECT_DIR$/vocabulary_bpe.py" />
         <option value="$PROJECT_DIR$/data_utils.py" />
         <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -97,7 +101,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
-    <property name="settings.editor.selected.configurable" value="Docker" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -165,7 +169,7 @@
       <updated>1556291973942</updated>
       <workItem from="1556291984662" duration="9276000" />
       <workItem from="1556710078616" duration="832000" />
-      <workItem from="1556804442350" duration="2574000" />
+      <workItem from="1556804442350" duration="4859000" />
     </task>
     <task id="LOCAL-00005" summary="eval interval to save time, unversion .idea/">
       <created>1556292726120</created>
@@ -181,18 +185,41 @@
       <option name="project" value="LOCAL" />
       <updated>1556343779825</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="eval_manager">
+      <created>1556812019502</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1556812019502</updated>
+    </task>
+    <task id="LOCAL-00008" summary="eval_manager">
+      <created>1556813781526</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556813781526</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16083000" />
+    <option name="totallyTimeSpent" value="18368000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="762" y="0" width="781" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.26206" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26206" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.2930403" />
@@ -209,6 +236,7 @@
       <window_info anchor="bottom" id="TODO" order="12" weight="0.3292232" />
       <window_info anchor="bottom" id="SonarLint" order="13" weight="0.32799014" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.3296433" />
+      <window_info anchor="right" x="0" y="0" width="145" height="670" id="Documentation" side_tool="true" weight="0.32985657" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="right" id="SciView" order="1" weight="0.32918397" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
@@ -291,20 +319,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="105" column="18" lean-forward="true" selection-start-line="105" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vocabulary_bpe.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -338,10 +352,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils.py">
+    <entry file="file://$PROJECT_DIR$/tpu_estimator.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
-          <caret line="350" column="28" selection-start-line="350" selection-start-column="16" selection-end-line="350" selection-end-column="28" />
+          <caret line="644" column="59" selection-start-line="644" selection-start-column="54" selection-end-line="644" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="123" column="19" selection-start-line="123" selection-start-column="10" selection-end-line="123" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="355" column="17" lean-forward="true" selection-start-line="355" selection-start-column="17" selection-end-line="355" selection-end-column="17" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -350,11 +381,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="356" lean-forward="true" selection-start-line="356" selection-end-line="356" />
+        <state relative-caret-position="280">
+          <caret line="346" column="37" selection-start-line="346" selection-start-column="37" selection-end-line="346" selection-end-column="37" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>

@@ -344,7 +344,7 @@ def get_cache_fn(mem_len: int):
 
 class EvalManager:
     def __init__(self, model_dir: str) -> None:
-        self.path = "{}/eval_dict.pkl".format(model_dir)
+        self.path = "{}/eval_dict.txt".format(model_dir)
         self.record = {}
         if not tf.io.gfile.exists(self.path):
             self.save()
@@ -358,7 +358,7 @@ class EvalManager:
     def save(self) -> None:
         with tf.Session() as sess:
             sess.run(tf.io.write_file(self.path, str(self.record)))
-        print("saving eval record:", self.record)
+        tf.logging.info("saving eval record: {}".format(str(self.record)))
 
 
 def main(unused_argv) -> None:
