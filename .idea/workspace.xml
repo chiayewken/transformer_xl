@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44654251-f0b6-4696-91d4-bfea27ac8a22" name="Default Changelist" comment="eval interval to save time, unversion .idea/">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh" afterDir="false" />
+    <list default="true" id="44654251-f0b6-4696-91d4-bfea27ac8a22" name="Default Changelist" comment="eval_manager">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,9 +15,14 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh">
+        <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-855" />
+            <state relative-caret-position="261">
+              <caret line="356" lean-forward="true" selection-start-line="356" selection-end-line="356" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -34,6 +38,13 @@
       <find>train_steps</find>
       <find>global_ste</find>
       <find>model_dir</find>
+      <find>dataset</find>
+      <find>input_fn</find>
+      <find>seed</find>
+      <find>path</find>
+      <find>interval</find>
+      <find>os.path.join</find>
+      <find>eval_record</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -47,17 +58,19 @@
         <option value="$PROJECT_DIR$/large_tpu_bpe_warmup_64k.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm.sh" />
         <option value="$PROJECT_DIR$/data_utils_bpe.py" />
-        <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh" />
+        <option value="$PROJECT_DIR$/vocabulary_bpe.py" />
+        <option value="$PROJECT_DIR$/data_utils.py" />
+        <option value="$PROJECT_DIR$/train.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="946" />
-    <option name="width" value="980" />
-    <option name="height" value="1089" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -65,6 +78,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -76,16 +90,23 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
+    <property name="settings.editor.selected.configurable" value="Docker" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="transformer_xl" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="transformer_xl" />
+      </console-settings>
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -142,7 +163,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556291973942</updated>
-      <workItem from="1556291984662" duration="1533000" />
+      <workItem from="1556291984662" duration="9276000" />
+      <workItem from="1556710078616" duration="832000" />
+      <workItem from="1556804442350" duration="2574000" />
     </task>
     <task id="LOCAL-00005" summary="eval interval to save time, unversion .idea/">
       <created>1556292726120</created>
@@ -151,40 +174,48 @@
       <option name="project" value="LOCAL" />
       <updated>1556292726120</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="large_tpu_bpe_with_lstm_lr_divide_4.sh">
+      <created>1556343779825</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1556343779825</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4934000" />
+    <option name="totallyTimeSpent" value="16083000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="757" y="0" width="784" height="871" extended-state="0" />
+    <frame x="762" y="0" width="781" height="870" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26103896" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.26206" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.29346487" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.2930403" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Version Control" order="4" weight="0.3292232" />
       <window_info anchor="bottom" id="Python Console" order="5" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32841328" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.3296433" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.32881773" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.3292232" />
       <window_info anchor="bottom" id="SonarLint" order="13" weight="0.32799014" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.3296433" />
-      <window_info anchor="right" id="Remote Host" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="right" id="SciView" order="1" weight="0.32918397" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="right" id="Key Promoter X" order="5" />
+      <window_info anchor="right" id="Remote Host" order="6" />
     </layout>
     <layout-to-restore>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -220,7 +251,9 @@
     <MESSAGE value="model_dir" />
     <MESSAGE value="gitignore .idea" />
     <MESSAGE value="eval interval to save time, unversion .idea/" />
-    <option name="LAST_COMMIT_MESSAGE" value="eval interval to save time, unversion .idea/" />
+    <MESSAGE value="large_tpu_bpe_with_lstm_lr_divide_4.sh" />
+    <MESSAGE value="eval_manager" />
+    <option name="LAST_COMMIT_MESSAGE" value="eval_manager" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe_lr_divide_2.sh">
@@ -258,30 +291,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-81">
           <caret line="105" column="18" lean-forward="true" selection-start-line="105" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="371" column="10" selection-start-line="371" selection-start-column="10" selection-end-line="371" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -292,9 +305,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vocabulary_bpe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855" />
+        <state relative-caret-position="551">
+          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/avg_checkpoints.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dynamic_eval_opt.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="52" column="27" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="350" column="28" selection-start-line="350" selection-start-column="16" selection-end-line="350" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="356" lean-forward="true" selection-start-line="356" selection-end-line="356" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

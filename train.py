@@ -1,5 +1,7 @@
 from typing import List
 
+import os
+import pickle
 import math
 import numpy as np
 import tensorflow as tf
@@ -342,6 +344,18 @@ def get_cache_fn(mem_len: int):
     return cache_fn
 
 
+class EvalManager:
+    def __init__(self, model_dir: str) -> None:
+        self.path = os.path.join(model_dir, "eval_dict.pkl")
+        self.record: dict = {}
+        if not os.path.isfile(self.path):
+            self.save()
+        self.record = pickle.load(open(self.path, "rb"))
+
+    def save(self) -> None:
+        pickle.dump(self.record, open(self.path, "wb"))
+
+
 def main(unused_argv) -> None:
     del unused_argv  # Unused
 
@@ -458,6 +472,8 @@ def main(unused_argv) -> None:
             tf.logging.info(log_str)
             tf.logging.info("=" * 200)
         else:
+            eval_manager = EvalManager(FLAGS.model_dir)
+            print("eval_record:", eval_manager.record)
             ckpt_state = tf.train.get_checkpoint_state(FLAGS.model_dir)
             eval_results = []
             for eval_checkpoint in ckpt_state.all_model_checkpoint_paths:
@@ -468,14 +484,17 @@ def main(unused_argv) -> None:
                     global_step < FLAGS.start_eval_steps
                     # or global_step > FLAGS.train_steps  # defaults stops eval after 100k steps
                     or global_step % FLAGS.eval_interval != 0
+                    or global_step in eval_manager.record
                 ):
-                    continue
+                    continue  # skip
                 ret = estimator.evaluate(
                     input_fn=eval_input_fn,
                     steps=num_eval_batch,
                     checkpoint_path=eval_checkpoint,
                 )
                 eval_results.append(ret)
+                eval_manager.record[global_step] = ret
+                eval_manager.save()
 
             eval_results.sort(key=lambda x: x["perplexity"])
 
@@ -485,6 +504,7 @@ def main(unused_argv) -> None:
                 log_str += "{} {} | ".format(key, val)
             tf.logging.info(log_str)
             tf.logging.info("=" * 200)
+
     else:
         if not FLAGS.do_eval:
             estimator.train(input_fn=train_input_fn, steps=FLAGS.train_steps)
