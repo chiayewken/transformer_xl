@@ -172,7 +172,7 @@ elif [[ $1 == 'dynamic_eval' ]]; then
 
     python data_utils_bpe.py \
         --data_dir=${LOCAL_DIR}/ \
-        --dataset=wt103 \
+        --dataset={DATASET} \
         --tgt_len=${TEST_TGT_LEN} \
         --per_host_test_bsz=0 \
         --num_passes=1 \

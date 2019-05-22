@@ -67,6 +67,14 @@ class BPECorpus:
                 os.path.join(path, "stories.00001.of.1000.test.txt")
             )
 
+        elif self.dataset == "openwebtext":
+            # assumes train.txt has been sharded to avoid OOM eg train00, train01 etc
+            path_pattern = tf.io.gfile.glob(os.path.join(path, "openwebtext.*.txt"))
+            path_pattern = sorted(path_pattern)
+            self.valid = self.vocab.encode_file(path_pattern[0])
+            self.test = self.vocab.encode_file(path_pattern[1])
+            self.train = path_pattern[2:]
+
         elif self.dataset == "lm1b":
             train_path_pattern = os.path.join(
                 path,
@@ -277,6 +285,7 @@ if __name__ == "__main__":
             "text8",
             "bookcorpus",
             "stories_corpus",
+            "openwebtext",
         ],
         help="Dataset name.",
     )

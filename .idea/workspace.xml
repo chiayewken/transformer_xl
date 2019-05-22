@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44654251-f0b6-4696-91d4-bfea27ac8a22" name="Default Changelist" comment="eval_manager">
+    <list default="true" id="44654251-f0b6-4696-91d4-bfea27ac8a22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_utils_bpe.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_utils_bpe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/large_tpu_bpe.sh" beforeDir="false" afterPath="$PROJECT_DIR$/large_tpu_bpe.sh" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,41 +16,63 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+            <state relative-caret-position="181">
+              <caret line="287" column="25" selection-start-line="287" selection-start-column="25" selection-end-line="287" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>model</find>
-      <find>_with_lstm</find>
-      <find>num_eval_batch</find>
-      <find>start_eval_steps</find>
-      <find>train_steps</find>
-      <find>global_ste</find>
-      <find>dataset</find>
-      <find>input_fn</find>
-      <find>seed</find>
-      <find>path</find>
-      <find>interval</find>
       <find>os.path.join</find>
       <find>eval_record</find>
       <find>tf.io</find>
-      <find>eval</find>
       <find>train</find>
       <find>managerf</find>
-      <find>model_dir</find>
       <find>session</find>
       <find>sess</find>
       <find>mana</find>
       <find>manager</find>
+      <find>optim</find>
+      <find>partial</find>
+      <find>self.train</find>
+      <find>create_ordered_tf</find>
+      <find>create_ordere</find>
+      <find>eval</find>
+      <find>is_training</find>
+      <find>model_dir</find>
+      <find>do_t</find>
+      <find>do_eval_only</find>
+      <find>loss</find>
+      <find>mul_adaptive</find>
+      <find>de</find>
+      <find>def deco</find>
+      <find>Conv2D</find>
+      <find>read</find>
+      <find>Input</find>
+      <find>inter</find>
+      <find>saver</find>
+      <find>interval</find>
+      <find>dataset</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>tf.keras.layers.Input</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,19 +84,22 @@
         <option value="$PROJECT_DIR$/large_tpu_bpe_warmup_32k.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_warmup_64k.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm.sh" />
-        <option value="$PROJECT_DIR$/data_utils_bpe.py" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
         <option value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh" />
-        <option value="$PROJECT_DIR$/vocabulary_bpe.py" />
         <option value="$PROJECT_DIR$/data_utils.py" />
-        <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/vocabulary_bpe.py" />
+        <option value="$PROJECT_DIR$/../iterable.py" />
+        <option value="$PROJECT_DIR$/ensemble.py" />
+        <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/large_tpu_bpe.sh" />
+        <option value="$PROJECT_DIR$/data_utils_bpe.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
+    <option name="x" value="947" />
+    <option name="width" value="980" />
     <option name="height" value="1088" />
   </component>
   <component name="ProjectView">
@@ -129,6 +155,58 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Python.ensemble">
+    <configuration name="ensemble" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="transformer_xl" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ensemble.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="iterable" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="transformer_xl" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../iterable.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.ensemble" />
+        <item itemvalue="Python.iterable" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -169,7 +247,12 @@
       <updated>1556291973942</updated>
       <workItem from="1556291984662" duration="9276000" />
       <workItem from="1556710078616" duration="832000" />
-      <workItem from="1556804442350" duration="4859000" />
+      <workItem from="1556804442350" duration="6276000" />
+      <workItem from="1556990455746" duration="8635000" />
+      <workItem from="1557459574670" duration="1031000" />
+      <workItem from="1557847711580" duration="2061000" />
+      <workItem from="1557903875272" duration="7926000" />
+      <workItem from="1558291322517" duration="6711000" />
     </task>
     <task id="LOCAL-00005" summary="eval interval to save time, unversion .idea/">
       <created>1556292726120</created>
@@ -199,11 +282,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556813781526</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="eval_manager">
+      <created>1556814331558</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1556814331558</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18368000" />
+    <option name="totallyTimeSpent" value="46149000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -215,28 +305,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="762" y="0" width="781" height="870" extended-state="0" />
+    <frame x="758" y="0" width="784" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26206" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.26103896" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.2930403" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.29187194" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Version Control" order="4" weight="0.3292232" />
       <window_info anchor="bottom" id="Python Console" order="5" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32841328" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.32881773" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.32718328" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.3292232" />
       <window_info anchor="bottom" id="SonarLint" order="13" weight="0.32799014" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.3296433" />
-      <window_info anchor="right" x="0" y="0" width="145" height="670" id="Documentation" side_tool="true" weight="0.32985657" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="right" id="SciView" order="1" weight="0.32918397" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
@@ -244,6 +333,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="right" id="Key Promoter X" order="5" />
       <window_info anchor="right" id="Remote Host" order="6" />
+      <window_info anchor="right" x="0" y="0" width="145" height="670" id="Documentation" order="7" side_tool="true" weight="0.32857144" />
     </layout>
     <layout-to-restore>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -283,6 +373,10 @@
     <MESSAGE value="eval_manager" />
     <option name="LAST_COMMIT_MESSAGE" value="eval_manager" />
   </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/transformer_xl$iterable.coverage" NAME="iterable Coverage Results" MODIFIED="1557129065283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/transformer_xl$ensemble.coverage" NAME="ensemble Coverage Results" MODIFIED="1557460043055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe_lr_divide_2.sh">
       <provider selected="true" editor-type-id="text-editor">
@@ -319,16 +413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vocabulary_bpe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_4.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -342,57 +426,79 @@
     <entry file="file://$PROJECT_DIR$/dynamic_eval_opt.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="52" column="27" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tpu_estimator.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="644" column="59" selection-start-line="644" selection-start-column="54" selection-end-line="644" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="123" column="19" selection-start-line="123" selection-start-column="10" selection-end-line="123" selection-end-column="19" />
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="355" column="17" lean-forward="true" selection-start-line="355" selection-start-column="17" selection-end-line="355" selection-end-column="17" />
+        <state relative-caret-position="288">
+          <caret line="643" column="39" selection-start-line="643" selection-start-column="39" selection-end-line="643" selection-end-column="39" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/large_tpu_bpe_lr_divide_4.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1901">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="407" column="9" selection-start-line="407" selection-start-column="7" selection-end-line="407" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../New Text Document.txt" />
+    <entry file="file://$PROJECT_DIR$/../iterable.py" />
+    <entry file="file://$PROJECT_DIR$/vocabulary_bpe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ensemble.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="346" column="37" selection-start-line="346" selection-start-column="37" selection-end-line="346" selection-end-column="37" />
+        <state relative-caret-position="185">
+          <caret line="485" column="49" selection-start-line="485" selection-start-column="34" selection-end-line="485" selection-end-column="49" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/large_tpu_bpe.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+        <state relative-caret-position="3287">
+          <caret line="173" column="30" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="287" column="25" selection-start-line="287" selection-start-column="25" selection-end-line="287" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
