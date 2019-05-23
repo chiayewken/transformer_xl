@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44654251-f0b6-4696-91d4-bfea27ac8a22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/large_tpu16_bpe.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_utils_bpe.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_utils_bpe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/large_tpu_bpe.sh" beforeDir="false" afterPath="$PROJECT_DIR$/large_tpu_bpe.sh" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,13 +15,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
+        <entry file="file://$PROJECT_DIR$/large_tpu16_bpe.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="287" column="25" selection-start-line="287" selection-start-column="25" selection-end-line="287" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-496">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -94,6 +90,7 @@
         <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/large_tpu_bpe.sh" />
         <option value="$PROJECT_DIR$/data_utils_bpe.py" />
+        <option value="$PROJECT_DIR$/large_tpu16_bpe.sh" />
       </list>
     </option>
   </component>
@@ -116,6 +113,11 @@
               <item name="transformer_xl" type="b2602c69:ProjectViewProjectNode" />
               <item name="transformer_xl" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="transformer_xl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="transformer_xl" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -126,9 +128,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/large_tpu16_bpe.sh" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/large_tpu_bpe_with_lstm_lr_divide_2.sh" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/large_tpu16_bpe.sh" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -252,7 +254,7 @@
       <workItem from="1557459574670" duration="1031000" />
       <workItem from="1557847711580" duration="2061000" />
       <workItem from="1557903875272" duration="7926000" />
-      <workItem from="1558291322517" duration="6711000" />
+      <workItem from="1558291322517" duration="8653000" />
     </task>
     <task id="LOCAL-00005" summary="eval interval to save time, unversion .idea/">
       <created>1556292726120</created>
@@ -289,11 +291,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556814331558</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add support for new dataset: openwebtext">
+      <created>1558567696099</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1558567696099</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46149000" />
+    <option name="totallyTimeSpent" value="48091000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -371,7 +380,8 @@
     <MESSAGE value="eval interval to save time, unversion .idea/" />
     <MESSAGE value="large_tpu_bpe_with_lstm_lr_divide_4.sh" />
     <MESSAGE value="eval_manager" />
-    <option name="LAST_COMMIT_MESSAGE" value="eval_manager" />
+    <MESSAGE value="add support for new dataset: openwebtext" />
+    <option name="LAST_COMMIT_MESSAGE" value="add support for new dataset: openwebtext" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/transformer_xl$iterable.coverage" NAME="iterable Coverage Results" MODIFIED="1557129065283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
@@ -494,11 +504,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_utils_bpe.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
+        <state relative-caret-position="608">
           <caret line="287" column="25" selection-start-line="287" selection-start-column="25" selection-end-line="287" selection-end-column="25" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/lm1b_large_tpu.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="80" column="30" lean-forward="true" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sota/lm1b.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/large_tpu16_bpe.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-496">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
         </state>
       </provider>
     </entry>
