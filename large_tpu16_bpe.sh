@@ -34,8 +34,8 @@ D_INNER=4096
 TGT_LEN=256
 MEM_LEN=256
 # BSZ 64 + Colab TPU ->  Used 8.91G of 8.00G hbm
-TRAIN_BSZ=32 * 16
-VALID_BSZ=32 * 16
+TRAIN_BSZ=512
+VALID_BSZ=512
 # num_passes repeats data
 # default is 10 to mitigate TPU dropping remainder on small datasets
 # should be able to set to 1 on large datasets
